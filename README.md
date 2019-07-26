@@ -1,2 +1,4 @@
 # domino-cli
-A CLI tool for dominokit tools
+CLI tool to generate domino projects and modules.
+
+

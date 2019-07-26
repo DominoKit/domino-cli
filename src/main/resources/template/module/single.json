@@ -1,0 +1,108 @@
+{
+  "name": "${artifactId}",
+  "files": [
+    {
+      "name": "pom.xml",
+      "template": "module/single/pom.vm"
+    }
+  ],
+  "folders": [
+    {
+      "name": "src",
+      "folders": [
+        {
+          "name": "main",
+          "files": [
+            {
+              "name": "module.gwt.xml",
+              "template": "module/single/module.gwt.vm"
+            }
+          ],
+          "folders": [
+            {
+              "name": "java.${rootPackage}.${subpackage}",
+              "folders": [
+                {
+                  "name": "client",
+                  "files": [
+                    {
+                      "name": "${moduleName}ClientModule.java",
+                      "template": "module/single/module.java"
+                    }
+                  ],
+                  "folders": [
+                    {
+                      "name": "presenters",
+                      "files": [
+                        {
+                          "name": "${moduleName}Proxy.java",
+                          "template": "module/proxy.java"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "views",
+                      "files": [
+                        {
+                          "name": "${moduleName}View.java",
+                          "template": "module/view.java"
+                        }
+                      ],
+                      "folders": [
+                        {
+                          "name": "ui",
+                          "files": [
+                            {
+                              "name": "${moduleName}ViewImpl.java",
+                              "template": "module/viewImpl.java"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "shared",
+                  "folders": [
+                    {
+                      "name": "events",
+                      "files": [
+                        {
+                          "name": "${moduleName}Event.java",
+                          "template": "module/event.java"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "model",
+                      "files": [
+                        {
+                          "name": "${moduleName}Request.java",
+                          "template": "module/request.java"
+                        },
+                        {
+                          "name": "${moduleName}Response.java",
+                          "template": "module/response.java"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "services",
+                      "files": [
+                        {
+                          "name": "${moduleName}Service.java",
+                          "template": "module/service.java"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

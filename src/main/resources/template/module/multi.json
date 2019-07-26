@@ -1,0 +1,231 @@
+{
+  "name": "${artifactId}",
+  "files": [
+    {
+      "name": "pom.xml",
+      "template": "module/multi/pom.vm"
+    }
+  ],
+  "folders": [
+    {
+      "name": "${artifactId}-backend",
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/multi/backend-pom.vm"
+        }
+      ],
+      "folders": [
+        {
+          "name": "src.main.java.${rootPackage}.${subpackage}.server",
+          "files": [
+            {
+              "name": "package-info.java",
+              "template": "module/multi/package-info.java"
+            }
+          ],
+          "folders": [
+            {
+              "name": "resource",
+              "files": [
+                {
+                  "name": "${moduleName}Resource.java",
+                  "template": "module/multi/resource.java"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "${artifactId}-frontend",
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/multi/frontend-pom.vm"
+        }
+      ],
+      "folders": [
+        {
+          "name": "src",
+          "folders": [
+            {
+              "name": "main",
+              "files": [
+                {
+                  "name": "module.gwt.xml",
+                  "template": "module/multi/frontend-gwt-module.vm"
+                }
+              ],
+              "folders": [
+                {
+                  "name": "java.${rootPackage}.${subpackage}.client",
+                  "files": [
+                    {
+                      "name": "${moduleName}ClientModule.java",
+                      "template": "module/multi/frontend-module.java"
+                    }
+                  ],
+                  "folders": [
+                    {
+                      "name": "presenters",
+                      "files": [
+                        {
+                          "name": "${moduleName}Proxy.java",
+                          "template": "module/proxy.java"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "views",
+                      "files": [
+                        {
+                          "name": "${moduleName}View.java",
+                          "template": "module/view.java"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "test",
+              "condition": "${generateTests}",
+              "folders": [
+                {
+                  "name": "java.${rootPackage}.${subpackage}.client",
+                  "files": [
+                    {
+                      "name": "${moduleName}ClientModuleTest.java",
+                      "template": "module/multi/test/moduleTest.java"
+                    },
+                    {
+                      "name": "${moduleName}ClientModuleTestSuite.java",
+                      "template": "module/multi/test/moduleTestSuite.java"
+                    }
+                  ],
+                  "folders": [
+                    {
+                      "name": "presenters",
+                      "files": [
+                        {
+                          "name": "${moduleName}PresenterSpy.java",
+                          "template": "module/multi/test/presenterSpy.java"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "views",
+                      "files": [
+                        {
+                          "name": "Fake${moduleName}View.java",
+                          "template": "module/multi/test/fakeView.java"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "${artifactId}-frontend-ui",
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/multi/frontend-ui-pom.vm"
+        }
+      ],
+      "folders": [
+        {
+          "name": "src",
+          "folders": [
+            {
+              "name": "main",
+              "files": [
+                {
+                  "name": "module.gwt.xml",
+                  "template": "module/multi/frontend-ui-gwt-module.vm"
+                }
+              ],
+              "folders": [
+                {
+                  "name": "java.${rootPackage}.${subpackage}.client",
+                  "files": [
+                    {
+                      "name": "${moduleName}UIClientModule.java",
+                      "template": "module/multi/frontend-ui-module.java"
+                    }
+                  ],
+                  "folders": [
+                    {
+                      "name": "views.ui",
+                      "files": [
+                        {
+                          "name": "${moduleName}ViewImpl.java",
+                          "template": "module/viewImpl.java"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "${artifactId}-shared",
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/multi/shared-pom.vm"
+        }
+      ],
+      "folders": [
+        {
+          "name": "src.main.java.${rootPackage}.${subpackage}.shared",
+          "folders": [
+            {
+              "name": "events",
+              "files": [
+                {
+                  "name": "${moduleName}Event.java",
+                  "template": "module/event.java"
+                }
+              ]
+            },
+            {
+              "name": "model",
+              "files": [
+                {
+                  "name": "${moduleName}Request.java",
+                  "template": "module/request.java"
+                },
+                {
+                  "name": "${moduleName}Response.java",
+                  "template": "module/response.java"
+                }
+              ]
+            },
+            {
+              "name": "services",
+              "files": [
+                {
+                  "name": "${moduleName}Service.java",
+                  "template": "module/service.java"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
