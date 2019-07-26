@@ -1,0 +1,25 @@
+{
+  "bin": {
+    "dominokit": "jdeploy-bundle/jdeploy.js"
+  },
+  "author": "DominoKit",
+  "description": "Command line tool to generate domino projects and modules",
+  "main": "index.js",
+  "preferGlobal": true,
+  "repository": "",
+  "version": "0.5.0",
+  "jdeploy": {
+    "jar": "build/libs/domino-cli-fat.jar"
+  },
+  "dependencies": {
+    "shelljs": "^0.7.5"
+  },
+  "license": "ISC",
+  "name": "dominokit",
+  "files": [
+    "jdeploy-bundle"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

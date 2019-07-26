@@ -5,6 +5,8 @@ CLI tool to generate domino projects and modules.
 
 navigate to [releases](https://github.com/DominoKit/domino-cli/releases) then download and install tour preferred package.
 
+NPM users can install the cli tool by executing `npm i dominokit`
+
 ### Usage :
 
 - ##### Generate application template
