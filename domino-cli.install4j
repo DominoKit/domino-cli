@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="8.0.1" transformSequenceNumber="8">
   <directoryPresets config="build/libs/domino-cli-fat.jar" />
-  <application name="dominokit-cli" applicationId="0518-2014-5243-3779" mediaDir="build/install4j" shortName="dominokit-cli" publisher="Dominokit" publisherWeb="www.dominokit.org" version="0.5.0" macVolumeId="6cb917d1c585346b" javaMinVersion="1.8.0" jdkMode="jdk" jdkName="JDK 1.8">
-    <variables>
-      <variable name="dominoCliFatJarPath" />
-    </variables>
-  </application>
+  <application name="dominokit-cli" applicationId="0518-2014-5243-3779" mediaDir="build/install4j" shortName="dominokit-cli" publisher="Dominokit" publisherWeb="www.dominokit.org" version="0.5.0" macVolumeId="6cb917d1c585346b" javaMinVersion="1.8.0" jdkMode="jdk" jdkName="JDK 1.8" />
   <files>
     <mountPoints>
       <mountPoint id="60" />
@@ -17,7 +13,7 @@
   </files>
   <launchers>
     <launcher name="dominokit" id="61">
-      <executable name="dominokit" iconSet="true" iconFile="/mnt/RANDOM/desktop_28_02_2019/domino-logo.ico" redirectStderr="false" executableMode="console" />
+      <executable name="dominokit" iconSet="true" iconFile="/mnt/RANDOM/desktop_28_02_2019/domino-logo.ico" redirectStderr="false" executableMode="console" changeWorkingDirectory="false" />
       <java mainClass="org.dominokit.cli.DominoCli">
         <classPath>
           <scanDirectory location="." failOnError="false" />

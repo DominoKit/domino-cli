@@ -12,8 +12,6 @@ public class Test {
     public static void main(String[] args) {
 
         String out = Paths.get("", "out").toAbsolutePath().toString();
-
-
         try {
             File file = new File(Paths.get(out, "sample").toAbsolutePath().toString());
 
@@ -29,13 +27,13 @@ public class Test {
         String[] appArgs = new String[]{"gen", "app", "-n", "sample", "-g", "org.dominokit","-d", out};
         commandLine.execute(appArgs);
 
-        String[] moduleArgs = new String[]{"gen", "module", "-n", "layout", "-p", "layout", "-s","-d", out+"/sample"};
+        String[] moduleArgs = new String[]{"gen", "module", "-n", "layout", "-sp", "layout", "-s","-d", out+"/sample"};
         commandLine.execute(moduleArgs);
 
-        String[] module2Args = new String[]{"gen", "module", "-n", "menu", "-p", "menu","-d", out+"/sample"};
+        String[] module2Args = new String[]{"gen", "module", "-n", "menu", "-sp", "menu","-d", out+"/sample"};
         commandLine.execute(module2Args);
 
-        String[] module3Args = new String[]{"gen", "module", "-n", "home", "-p", "home.street", "-t","-d", out+"/sample"};
+        String[] module3Args = new String[]{"gen", "module", "-n", "home", "-sp", "home.street", "-t","-d", out+"/sample"};
         commandLine.execute(module3Args);
     }
 }

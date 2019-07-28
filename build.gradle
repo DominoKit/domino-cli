@@ -90,4 +90,4 @@ repositories {
     maven { url "https://repo.vertispan.com/gwt-snapshot" }
 }
 
-defaultTasks("build", "shadowJar")
+defaultTasks("build", "shadowJar", "media")

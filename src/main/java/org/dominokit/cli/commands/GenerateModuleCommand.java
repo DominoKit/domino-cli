@@ -44,7 +44,7 @@ public class GenerateModuleCommand implements Runnable {
     private boolean generateTests = false;
 
     @Option(
-            names = {"-p", "--package"},
+            names = {"-sp", "--subpackage"},
             description = "the module sub package, this will be appended to the application rootPackage"
     )
     private String subPackage;

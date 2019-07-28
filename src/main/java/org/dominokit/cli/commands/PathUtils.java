@@ -7,15 +7,15 @@ public class PathUtils {
 
     private static String workingDir;
 
-    public static String getUserDir(){
-        if(nonNull(workingDir)){
+    public static String getUserDir() {
+        if (nonNull(workingDir)) {
             return workingDir;
-        }else {
+        } else {
             return System.getProperty("user.dir");
         }
     }
 
-    static void setWorkingDir(String workingDir){
-        PathUtils.workingDir= workingDir;
+    static void setWorkingDir(String workingDir) {
+        PathUtils.workingDir = workingDir;
     }
 }
