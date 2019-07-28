@@ -41,6 +41,10 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.apache.maven/maven-model-builder
     compile group: 'org.apache.maven', name: 'maven-model-builder', version: '3.6.1'
+
+    // https://mvnrepository.com/artifact/org.apache.maven.shared/maven-invoker
+    compile group: 'org.apache.maven.shared', name: 'maven-invoker', version: '3.0.1'
+
 }
 
 
@@ -50,11 +54,6 @@ compileJava {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
     options.compilerArgs += ["-Aproject=${project.group}/${project.name}"]
-}
-
-task setEnv{
-    System.setProperty("DOMINO_CLI_FAT_JAR_PATH", buildDir.absolutePath+"/libs/domino-cli-fat.jar")
-    println (new File('libs/domino-cli-fat.jar').absolutePath)
 }
 
 shadowJar {
@@ -70,7 +69,7 @@ install4j {
 
 }
 task media(type: com.install4j.gradle.Install4jTask) {
-    dependsOn 'shadowJar','setEnv' // example task that prepares the distribution for install4j
+    dependsOn 'shadowJar' // example task that prepares the distribution for install4j
     projectFile = 'domino-cli.install4j'
     variables = [majorVersion: version.substring(0, 1), build: 1234]
 }
