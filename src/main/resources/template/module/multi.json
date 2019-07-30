@@ -26,7 +26,7 @@
           ],
           "folders": [
             {
-              "name": "resource",
+              "name": "resources",
               "files": [
                 {
                   "name": "${moduleName}Resource.java",
