@@ -8,12 +8,12 @@
     </mountPoints>
     <entries>
       <fileEntry mountPoint="60" file="build/libs/domino-cli-fat.jar" />
-      <fileEntry mountPoint="60" file="/mnt/RANDOM/desktop_28_02_2019/domino-logo.png" />
+      <fileEntry mountPoint="60" file="logo/domino-logo.png" />
     </entries>
   </files>
   <launchers>
     <launcher name="dominokit" id="61">
-      <executable name="dominokit" iconSet="true" iconFile="/mnt/RANDOM/desktop_28_02_2019/domino-logo.ico" redirectStderr="false" executableMode="console" changeWorkingDirectory="false" />
+      <executable name="dominokit" iconSet="true" iconFile="logo/domino-logo.ico" redirectStderr="false" executableMode="console" changeWorkingDirectory="false" />
       <java mainClass="org.dominokit.cli.DominoCli">
         <classPath>
           <scanDirectory location="." failOnError="false" />
@@ -21,12 +21,12 @@
         </classPath>
       </java>
       <iconImageFiles>
-        <file path="/mnt/CODE/GIT/domino-kit/logo/domino-logo-16x16.png" />
-        <file path="/mnt/CODE/GIT/domino-kit/logo/domino-logo-32x32.png" />
-        <file path="/mnt/CODE/GIT/domino-kit/logo/domino-logo-48x48.png" />
-        <file path="/mnt/CODE/GIT/domino-kit/logo/domino-logo-64x64.png" />
-        <file path="/mnt/CODE/GIT/domino-kit/logo/domino-logo-96x96.png" />
-        <file path="/mnt/CODE/GIT/domino-kit/logo/domino-logo-128x128.png" />
+        <file path="logo/domino-logo-16x16.png" />
+        <file path="logo/domino-logo-32x32.png" />
+        <file path="logo/domino-logo-48x48.png" />
+        <file path="logo/domino-logo-64x64.png" />
+        <file path="logo/domino-logo-96x96.png" />
+        <file path="logo/domino-logo-128x128.png" />
       </iconImageFiles>
     </launcher>
   </launchers>

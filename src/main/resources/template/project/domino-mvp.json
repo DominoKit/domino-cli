@@ -3,11 +3,11 @@
   "files": [
     {
       "name": "pom.xml",
-      "template": "app/pom.vm"
+      "template": "app/mvp/pom.vm"
     },
     {
       "name": "README.md",
-      "template": "app/README.vm"
+      "template": "app/mvp/README.vm"
     }
   ],
   "folders": [
@@ -19,31 +19,31 @@
           "files": [
             {
               "name": "ALL_TESTS.xml",
-              "template": "app/runConfigurations/ALL_TESTS.xml"
+              "template": "app/mvp/runConfigurations/ALL_TESTS.xml"
             },
             {
               "name": "${name}.xml",
-              "template": "app/runConfigurations/app.vm"
+              "template": "app/mvp/runConfigurations/app.vm"
             },
             {
               "name": "${name}-dev.xml",
-              "template": "app/runConfigurations/app-dev.vm"
+              "template": "app/mvp/runConfigurations/app-dev.vm"
             },
             {
               "name": "Development.xml",
-              "template": "app/runConfigurations/Development.xml"
+              "template": "app/mvp/runConfigurations/Development.xml"
             },
             {
               "name": "js_debug.xml",
-              "template": "app/runConfigurations/js_debug.xml"
+              "template": "app/mvp/runConfigurations/js_debug.xml"
             },
             {
               "name": "process_sources.xml",
-              "template": "app/runConfigurations/process_sources.xml"
+              "template": "app/mvp/runConfigurations/process_sources.xml"
             },
             {
               "name": "super_dev_mode.xml",
-              "template": "app/runConfigurations/super_dev_mode.xml"
+              "template": "app/mvp/runConfigurations/super_dev_mode.xml"
             }
           ]
         }
@@ -54,7 +54,7 @@
       "files": [
         {
           "name": "pom.xml",
-          "template": "app/backend/pom.vm"
+          "template": "app/mvp/backend/pom.vm"
         }
       ],
       "folders": [
@@ -63,7 +63,7 @@
           "files": [
             {
               "name": "config.json",
-              "template": "app/backend/config.json"
+              "template": "app/mvp/backend/config.json"
             }
           ],
           "folders": [
@@ -73,15 +73,15 @@
                 {
                   "name": "favicon.ico",
                   "type": "RESOURCE",
-                  "template": "app/backend/favicon.ico"
+                  "template": "app/mvp/backend/favicon.ico"
                 },
                 {
                   "name": "index.html",
-                  "template": "app/backend/index.vm"
+                  "template": "app/mvp/backend/index.vm"
                 },
                 {
                   "name": "${name}.css",
-                  "template": "app/backend/app.css"
+                  "template": "app/mvp/backend/app.css"
                 }
               ]
             }
@@ -94,7 +94,7 @@
       "files": [
         {
           "name": "pom.xml",
-          "template": "app/frontend/pom.vm"
+          "template": "app/mvp/frontend/pom.vm"
         }
       ],
       "folders": [
@@ -106,7 +106,7 @@
               "files": [
                 {
                   "name": "module.gwt.xml",
-                  "template": "app/frontend/module.gwt.vm"
+                  "template": "app/mvp/frontend/module.gwt.vm"
                 }
               ],
               "folders": [
@@ -115,7 +115,7 @@
                   "files": [
                     {
                       "name": "AppClientModule.java",
-                      "template": "app/frontend/AppClientModule.java"
+                      "template": "app/mvp/frontend/AppClientModule.java"
                     }
                   ]
                 }

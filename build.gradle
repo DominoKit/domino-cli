@@ -59,7 +59,7 @@ compileJava {
 shadowJar {
     archiveBaseName = 'domino-cli'
     archiveClassifier = 'fat'
-    version = null
+    version =null
 }
 
 install4j {
