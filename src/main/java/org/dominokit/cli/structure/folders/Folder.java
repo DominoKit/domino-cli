@@ -19,7 +19,7 @@ public class Folder {
     public static final NullFolder NONE = new NullFolder();
 
     private String name;
-    private boolean condition = true;
+    private String condition = "true";
     private List<Folder> folders = new ArrayList<>();
     private List<TemplateFile> files = new ArrayList<>();
 
@@ -67,11 +67,11 @@ public class Folder {
         this.folders = folders;
     }
 
-    public boolean isCondition() {
+    public String getCondition() {
         return condition;
     }
 
-    public void setCondition(boolean condition) {
+    public void setCondition(String condition) {
         this.condition = condition;
     }
 
@@ -131,7 +131,7 @@ public class Folder {
     }
 
     public void write(Path path, IsContext context) throws IOException {
-        if(condition) {
+        if(Boolean.valueOf(condition)) {
             if (name.contains(".") && !name.startsWith(".")) {
                 Folder folder = Folder.fromPackage(name);
                 folder.deepLastChild().setFiles(files);

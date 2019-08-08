@@ -23,7 +23,6 @@ public class ResourceFileContentProcessor implements FileContentProcessor {
     public String processedContent() {
 
         try {
-            LOGGER.log(Level.INFO, "Loading resource "+resourceName);
             InputStream resourceAsStream = getClass().getClassLoader()
                     .getResourceAsStream(resourceName);
             Stream<String> lines = IOUtils.readLines(resourceAsStream, StandardCharsets.UTF_8).stream();

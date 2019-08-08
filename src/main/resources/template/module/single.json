@@ -1,108 +1,145 @@
 {
   "name": "${artifactId}",
-  "files": [
-    {
-      "name": "pom.xml",
-      "template": "module/single/pom.vm"
-    }
-  ],
+  "condition": "true",
   "folders": [
     {
       "name": "src",
+      "condition": "true",
       "folders": [
         {
           "name": "main",
-          "files": [
-            {
-              "name": "module.gwt.xml",
-              "template": "module/single/module.gwt.vm"
-            }
-          ],
+          "condition": "true",
           "folders": [
             {
-              "name": "java.${rootPackage}.${subpackage}",
+              "name": "java",
+              "condition": "true",
               "folders": [
                 {
-                  "name": "client",
-                  "files": [
-                    {
-                      "name": "${moduleName}ClientModule.java",
-                      "template": "module/single/module.java"
-                    }
-                  ],
+                  "name": "${rootPackage}.${subpackage}",
+                  "condition": "true",
                   "folders": [
                     {
-                      "name": "presenters",
-                      "files": [
-                        {
-                          "name": "${moduleName}Proxy.java",
-                          "template": "module/proxy.java"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "views",
-                      "files": [
-                        {
-                          "name": "${moduleName}View.java",
-                          "template": "module/view.java"
-                        }
-                      ],
+                      "name": "client",
+                      "condition": "true",
                       "folders": [
                         {
-                          "name": "ui",
+                          "name": "presenters",
+                          "condition": "true",
+                          "folders": [],
                           "files": [
                             {
-                              "name": "${moduleName}ViewImpl.java",
-                              "template": "module/viewImpl.java"
+                              "name": "${moduleName}Proxy.java",
+                              "template": "module/single/src/main/java/__rootPackage__.__subpackage__/client/presenters/__moduleName__Proxy.java",
+                              "type": "VELOCITY"
+                            }
+                          ]
+                        },
+                        {
+                          "name": "views",
+                          "condition": "true",
+                          "folders": [
+                            {
+                              "name": "ui",
+                              "condition": "true",
+                              "folders": [],
+                              "files": [
+                                {
+                                  "name": "${moduleName}ViewImpl.java",
+                                  "template": "module/single/src/main/java/__rootPackage__.__subpackage__/client/views/ui/__moduleName__ViewImpl.java",
+                                  "type": "VELOCITY"
+                                }
+                              ]
+                            }
+                          ],
+                          "files": [
+                            {
+                              "name": "${moduleName}View.java",
+                              "template": "module/single/src/main/java/__rootPackage__.__subpackage__/client/views/__moduleName__View.java",
+                              "type": "VELOCITY"
                             }
                           ]
                         }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "shared",
-                  "folders": [
-                    {
-                      "name": "events",
+                      ],
                       "files": [
                         {
-                          "name": "${moduleName}Event.java",
-                          "template": "module/event.java"
+                          "name": "${moduleName}ClientModule.java",
+                          "template": "module/single/src/main/java/__rootPackage__.__subpackage__/client/__moduleName__ClientModule.java",
+                          "type": "VELOCITY"
                         }
                       ]
                     },
                     {
-                      "name": "model",
-                      "files": [
+                      "name": "shared",
+                      "condition": "true",
+                      "folders": [
                         {
-                          "name": "${moduleName}Request.java",
-                          "template": "module/request.java"
+                          "name": "services",
+                          "condition": "true",
+                          "folders": [],
+                          "files": [
+                            {
+                              "name": "${moduleName}Service.java",
+                              "template": "module/single/src/main/java/__rootPackage__.__subpackage__/shared/services/__moduleName__Service.java",
+                              "type": "VELOCITY"
+                            }
+                          ]
                         },
                         {
-                          "name": "${moduleName}Response.java",
-                          "template": "module/response.java"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "services",
-                      "files": [
+                          "name": "events",
+                          "condition": "true",
+                          "folders": [],
+                          "files": [
+                            {
+                              "name": "${moduleName}Event.java",
+                              "template": "module/single/src/main/java/__rootPackage__.__subpackage__/shared/events/__moduleName__Event.java",
+                              "type": "VELOCITY"
+                            }
+                          ]
+                        },
                         {
-                          "name": "${moduleName}Service.java",
-                          "template": "module/service.java"
+                          "name": "model",
+                          "condition": "true",
+                          "folders": [],
+                          "files": [
+                            {
+                              "name": "${moduleName}Response.java",
+                              "template": "module/single/src/main/java/__rootPackage__.__subpackage__/shared/model/__moduleName__Response.java",
+                              "type": "VELOCITY"
+                            },
+                            {
+                              "name": "${moduleName}Request.java",
+                              "template": "module/single/src/main/java/__rootPackage__.__subpackage__/shared/model/__moduleName__Request.java",
+                              "type": "VELOCITY"
+                            }
+                          ]
                         }
-                      ]
+                      ],
+                      "files": []
                     }
-                  ]
+                  ],
+                  "files": []
                 }
-              ]
+              ],
+              "files": []
+            }
+          ],
+          "files": [
+            {
+              "name": "module.gwt.xml",
+              "template": "module/single/src/main/module.gwt.xml",
+              "type": "VELOCITY"
             }
           ]
         }
-      ]
+      ],
+      "files": []
+    }
+  ],
+  "files": [
+    {
+      "name": "pom.xml",
+      "template": "module/single/pom.xml",
+      "type": "VELOCITY"
     }
   ]
 }

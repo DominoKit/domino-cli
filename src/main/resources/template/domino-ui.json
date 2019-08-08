@@ -1,0 +1,136 @@
+{
+  "name": "${name}",
+  "files": [
+    {
+      "name": "pom.xml",
+      "template": "app/ui/pom.vm"
+    },
+    {
+      "name": "run",
+      "template": "app/ui/run"
+    }
+  ],
+  "folders": [
+    {
+      "name": "${name}-client",
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "app/ui/client/pom.vm"
+        }
+      ],
+      "folders": [
+        {
+          "name": "src.main",
+          "files": [
+            {
+              "name": "module.gwt.xml",
+              "template": "app/ui/client/module.gwt.xml"
+            }
+          ],
+          "folders": [
+            {
+              "name": "java.${rootPackage}",
+              "files": [
+                {
+                  "name": "App.java",
+                  "template": "app/ui/client/App.java"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "${name}-server",
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "app/ui/server/pom.vm"
+        }
+      ],
+      "folders": [
+        {
+          "name": "src.main",
+          "folders": [
+            {
+              "name": "java.${rootPackage}",
+              "files": [
+                {
+                  "name": "GreetingService.java",
+                  "template": "app/ui/server/GreetingService.java"
+                }
+              ]
+            },
+            {
+              "name": "jettyconf",
+              "files": [
+                {
+                  "name": "context.xml",
+                  "template": "app/ui/server/jettyconf/context.xml"
+                }
+              ]
+            },
+            {
+              "name": "webapp",
+              "files": [
+                {
+                  "name": "${name}-ui-starter.css",
+                  "template": "app/ui/server/webapp/app-ui-starter.css"
+                },{
+                  "name": "favicon.ico",
+                  "type": "RESOURCE",
+                  "template": "app/ui/server/webapp/favicon.ico"
+                },{
+                  "name": "index.html",
+                  "template": "app/ui/server/webapp/index.html"
+                }
+              ],
+              "folders": [
+                {
+                  "name": "WEB-INF",
+                  "files": [
+                    {
+                      "name": "web.xml",
+                      "template": "app/ui/server/webapp/WEB-INF/web.xml"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tomcatconf",
+              "files": [
+                {
+                  "name": "context.xml",
+                  "template": "app/ui/server/tomcatconf/context.xml"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "${name}-shared",
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "app/ui/shared/pom.vm"
+        }
+      ],
+      "folders": [
+        {
+          "name": "src.main.java.${rootPackage}",
+          "files": [
+            {
+              "name": "Person.java",
+              "template": "app/ui/shared/Person.java"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

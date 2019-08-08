@@ -1,2 +1,2 @@
 #!/bin/bash
-mvn tomcat7:run -pl *-server -am -Denv=dev & mvn gwt:codeserver -pl *-client -am
+mvn tomcat7:run -pl *-server -am -Denv=dev | mvn gwt:codeserver -pl *-client -am

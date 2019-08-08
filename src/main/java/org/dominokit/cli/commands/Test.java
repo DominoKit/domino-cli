@@ -11,6 +11,8 @@ public class Test {
 
     public static void main(String[] args) {
 
+        DescriptorsGenerator.generate();
+
         String out = Paths.get("", "out").toAbsolutePath().toString();
         try {
             File file = new File(Paths.get(out, "sample").toAbsolutePath().toString());
@@ -36,4 +38,8 @@ public class Test {
         String[] module3Args = new String[]{"gen", "module", "-n", "home", "-sp", "home.street", "-t","-d", out+"/sample"};
         commandLine.execute(module3Args);
     }
+
+
+
+
 }
