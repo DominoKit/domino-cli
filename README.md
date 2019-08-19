@@ -63,6 +63,10 @@ Use with generate command to generate a domino-mvp template project
                               root package name
   -n, --name=<name>         The project name, also will be use as the artifact
                               ID
+  -t, --type=<type>         The type of the project, available types are [mvp,
+                              ui], [mvp] will generate a domino-mvp
+                              application, [ui] will generate simple gwt with
+                              domino-ui application.
 Commands:
   help  Displays help information about the specified command
 ```

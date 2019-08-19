@@ -38,8 +38,4 @@ public class Test {
         String[] module3Args = new String[]{"gen", "module", "-n", "home", "-sp", "home.street", "-t","-d", out+"/sample"};
         commandLine.execute(module3Args);
     }
-
-
-
-
 }
