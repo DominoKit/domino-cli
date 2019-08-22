@@ -38,15 +38,15 @@ to generate a module without sub-modules use the `-s` option
 #### Detailed instructions 
 
 ```
-Usage: domino [COMMAND]
-Executes domino commands
+Usage: dominokit [COMMAND]
+Executes dominokit commands
 Commands:
   help           Displays help information about the specified command
   generate, gen  Generates a domino template project/module
 ```
 
 ```
-Usage: domino generate [COMMAND]
+Usage: dominokit generate [COMMAND]
 Generates a domino template project/module
 Commands:
   help    Displays help information about the specified command
@@ -55,7 +55,7 @@ Commands:
 ```
 
 ```
-Usage: domino generate app [-d=<workingDire>] -g=<groupId> -n=<name> [COMMAND]
+Usage: dominokit generate app [-d=<workingDire>] -g=<groupId> -n=<name> [COMMAND]
 Use with generate command to generate a domino-mvp template project
   -d, --dir=<workingDire>   absolute path to the directory where the project
                               should be generated.
@@ -72,7 +72,7 @@ Commands:
 ```
 
 ```
-Usage: domino generate module [-st] [-d=<workingDire>] -n=<name>
+Usage: dominokit generate module [-st] [-d=<workingDire>] -n=<name>
                               [-sp=<subPackage>] [COMMAND]
 Use with generate command to generate a domino-mvp module template
   -d, --dir=<workingDire>   absolute path to the module where the project

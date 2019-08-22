@@ -30,13 +30,6 @@
                         }
                       ]
                     }
-                  ],
-                  "files": [
-                    {
-                      "name": "App.java",
-                      "template": "app/ui/__name__-client/src/main/java/App.java",
-                      "type": "VELOCITY"
-                    }
                   ]
                 }
               ],
