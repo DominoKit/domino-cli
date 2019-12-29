@@ -19,11 +19,11 @@ public class ${moduleName}ViewImpl extends BaseElementView<HTMLDivElement> imple
 
     @Override
     public void init(HTMLDivElement root) {
-        root.appendChild(h(1).textContent("Hello World! from module : ${moduleName}").asElement());
+        root.appendChild(h(1).textContent("Hello World! from module : ${moduleName}").element());
     }
 
     @Override
     public HTMLDivElement createRoot() {
-        return div().asElement();
+        return div().element();
     }
 }
