@@ -40,20 +40,14 @@
                   ],
                   "files": [
                     {
-                      "name": "${moduleName}UIClientModule.java",
-                      "template": "module/j2cl/multi/__artifactId__-frontend-ui/src/main/java.__rootPackage__.__subpackage__.client/__moduleName__UIClientModule.java",
+                      "name": "package-info.java",
+                      "template": "module/j2cl/multi/__artifactId__-frontend-ui/src/main/java.__rootPackage__.__subpackage__.client/package-info.java",
                       "type": "VELOCITY"
                     }
                   ]
                 }
               ],
-              "files": [
-                {
-                  "name": "module.gwt.xml",
-                  "template": "module/j2cl/multi/__artifactId__-frontend-ui/src/main/module.gwt.xml",
-                  "type": "VELOCITY"
-                }
-              ]
+              "files": []
             }
           ],
           "files": []
@@ -213,20 +207,14 @@
                   ],
                   "files": [
                     {
-                      "name": "${moduleName}ClientModule.java",
-                      "template": "module/j2cl/multi/__artifactId__-frontend/src/main/java.__rootPackage__.__subpackage__.client/__moduleName__ClientModule.java",
+                      "name": "package-info.java",
+                      "template": "module/j2cl/multi/__artifactId__-frontend/src/main/java.__rootPackage__.__subpackage__.client/package-info.java",
                       "type": "VELOCITY"
                     }
                   ]
                 }
               ],
-              "files": [
-                {
-                  "name": "module.gwt.xml",
-                  "template": "module/j2cl/multi/__artifactId__-frontend/src/main/module.gwt.xml",
-                  "type": "VELOCITY"
-                }
-              ]
+              "files": []
             }
           ],
           "files": []

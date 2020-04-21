@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.dominokit.domino.api</groupId>
             <artifactId>domino-api-client</artifactId>
         </dependency>
@@ -65,22 +60,9 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>${artifactId}-shared</artifactId>
-            <version>${project.version}</version>
-            <classifier>sources</classifier>
-        </dependency>
-
-        <dependency>
             <groupId>org.dominokit.jackson</groupId>
             <artifactId>jackson-apt</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.dominokit.jackson</groupId>
-            <artifactId>jackson-apt</artifactId>
-            <version>${jackson.version}</version>
-            <classifier>sources</classifier>
         </dependency>
         <dependency>
             <groupId>org.dominokit.jackson</groupId>
@@ -118,12 +100,16 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <moduleName>${rootPackage}.${subpackage}.${moduleName}ClientModule</moduleName>
+                    <moduleName>${moduleName}ClientModule</moduleName>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.vertispan.j2cl</groupId>
+                <artifactId>j2cl-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

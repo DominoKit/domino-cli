@@ -31,6 +31,7 @@ public class GenerateModuleCommand implements Runnable {
 
     @Option(
             names = {"-s", "--single"},
+            fallbackValue = "true",
             defaultValue = "false",
             description = "if true will split the module into more submodules, [name]-backend, [name]-frontend, [name]-frontend-ui, [name]-shared"
     )
@@ -38,6 +39,7 @@ public class GenerateModuleCommand implements Runnable {
 
     @Option(
             names = {"-t", "--tests"},
+            fallbackValue = "true",
             defaultValue = "false",
             description = "if true will generate tests for a multi submodules module."
     )
@@ -45,6 +47,7 @@ public class GenerateModuleCommand implements Runnable {
 
     @Option(
             names = {"-j", "--j2cl"},
+            fallbackValue = "true",
             defaultValue = "false",
             description = "if true will generate a module that target j2cl compiler."
     )
@@ -64,6 +67,8 @@ public class GenerateModuleCommand implements Runnable {
 
     @Override
     public void run() {
+
+
 
         PathUtils.setWorkingDir(workingDire);
 
@@ -106,9 +111,21 @@ public class GenerateModuleCommand implements Runnable {
             }
 
             addModule(module);
+            System.out.println(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Module generated with the following arguments" +
+                "\nname=" + name +
+                "\nsingle=" + single +
+                "\ngenerateTests=" + generateTests +
+                "\nj2cl=" + j2cl +
+                "\nsubPackage=" + subPackage +
+                "\nworkingDire=" + workingDire ;
     }
 
     private void addModule(Module module) throws IOException {
