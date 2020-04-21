@@ -16,7 +16,9 @@ public class SingleModuleGenerator {
 
     public void generate(Module module) throws IOException {
 
-        String projectTemplateConfig = new VelocityContentProcessor("template/module/single.json", module)
+        String compiler = module.isJ2cl()?"j2cl":"gwt";
+
+        String projectTemplateConfig = new VelocityContentProcessor("template/module/"+compiler+"/single.json", module)
                 .processedContent();
         Folder folder = Folder_MapperImpl.INSTANCE
                 .read(projectTemplateConfig);
@@ -34,13 +36,6 @@ public class SingleModuleGenerator {
                         "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
                         "\n\t\t\t<artifactId>" + module.getArtifactId() + "</artifactId>" +
                         "\n\t\t\t<version>${project.version}</version>" +
-                        "\n\t\t</dependency>" +
-                        "\n" +
-                        "\n\t\t<dependency>" +
-                        "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
-                        "\n\t\t\t<artifactId>" + module.getArtifactId() + "</artifactId>" +
-                        "\n\t\t\t<version>${project.version}</version>" +
-                        "\n\t\t\t<classifier>sources</classifier>" +
                         "\n\t\t</dependency>" +
                         "\n\t</dependencies>");
 

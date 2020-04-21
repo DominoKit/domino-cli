@@ -15,7 +15,9 @@ import java.nio.file.Paths;
 public class MultiModuleGenerator {
 
     public void generate(Module module) throws IOException {
-        String projectTemplateConfig = new VelocityContentProcessor("template/module/multi.json", module)
+
+        String compiler = module.isJ2cl()?"j2cl":"gwt";
+        String projectTemplateConfig = new VelocityContentProcessor("template/module/"+compiler+"/multi.json", module)
                 .processedContent();
         Folder folder = Folder_MapperImpl.INSTANCE
                 .read(projectTemplateConfig);
@@ -57,23 +59,10 @@ public class MultiModuleGenerator {
                                 "\n" +
                                 "\n\t\t<dependency>" +
                                 "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
-                                "\n\t\t\t<artifactId>" + module.getArtifactId() + "-frontend</artifactId>" +
-                                "\n\t\t\t<version>${project.version}</version>" +
-                                "\n\t\t\t<classifier>sources</classifier>" +
-                                "\n\t\t</dependency>" +
-                                "\n" +
-                                "\n\t\t<dependency>" +
-                                "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
                                 "\n\t\t\t<artifactId>" + module.getArtifactId() + "-frontend-ui</artifactId>" +
                                 "\n\t\t\t<version>${project.version}</version>" +
                                 "\n\t\t</dependency>" +
                                 "\n" +
-                                "\n\t\t<dependency>" +
-                                "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
-                                "\n\t\t\t<artifactId>" + module.getArtifactId() + "-frontend-ui</artifactId>" +
-                                "\n\t\t\t<version>${project.version}</version>" +
-                                "\n\t\t\t<classifier>sources</classifier>" +
-                                "\n\t\t</dependency>" +
                                 "\n\t</dependencies>");
 
         FileUtils.write(module.getFrontendPom().getPomFile(), frontEndPomString, StandardCharsets.UTF_8);

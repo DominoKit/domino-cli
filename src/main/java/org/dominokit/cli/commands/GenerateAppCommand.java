@@ -44,10 +44,17 @@ public class GenerateAppCommand implements Runnable {
 
     @Option(
             names = {"-t", "--type"},
-            description = "The type of the project, available types are [mvp,ui], [mvp] will generate a domino-mvp application, [ui] will generate simple gwt with domino-ui application.",
+            description = "The type of the project, available types are [mvp,basic], [mvp] will generate a domino-mvp application, [basic] will generate simple gwt with domino-ui application.",
             defaultValue = "mvp"
     )
     private String type;
+
+    @Option(
+            names = {"-j", "--j2cl"},
+            defaultValue = "false",
+            description = "if true will generate a module that target j2cl compiler."
+    )
+    private boolean j2cl = false;
 
     @Override
     public void run() {
@@ -63,7 +70,7 @@ public class GenerateAppCommand implements Runnable {
 
         try {
 
-            String projectTemplateConfig = new VelocityContentProcessor(getTemplateByType(type), project)
+            String projectTemplateConfig = new VelocityContentProcessor(getTemplateByType(j2cl, type), project)
                     .processedContent();
             Folder folder = Folder_MapperImpl.INSTANCE
                     .read(projectTemplateConfig);
@@ -74,11 +81,13 @@ public class GenerateAppCommand implements Runnable {
         }
     }
 
-    private String getTemplateByType(String type) {
+    private String getTemplateByType(boolean j2cl, String type) {
+        String compiler = j2cl?"j2cl":"gwt";
+
         if(type.equalsIgnoreCase("mvp")){
-            return "template/project/domino-mvp.json";
-        }else if(type.equalsIgnoreCase("ui")){
-            return "template/project/domino-ui.json";
+            return "template/project/"+compiler+"/domino-mvp.json";
+        }else if(type.equalsIgnoreCase("basic")){
+            return "template/project/"+compiler+"/domino-basic.json";
         }
         LOGGER.log(Level.SEVERE, "Unrecognized application type : "+type);
         throw new IllegalArgumentException("Unrecognized application type : "+type);

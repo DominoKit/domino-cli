@@ -1,0 +1,296 @@
+{
+  "name": "${artifactId}",
+  "condition": "true",
+  "folders": [
+    {
+      "name": "${artifactId}-frontend-ui",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "src",
+          "condition": "true",
+          "folders": [
+            {
+              "name": "main",
+              "condition": "true",
+              "folders": [
+                {
+                  "name": "java.${rootPackage}.${subpackage}.client",
+                  "condition": "true",
+                  "folders": [
+                    {
+                      "name": "views",
+                      "condition": "true",
+                      "folders": [
+                        {
+                          "name": "ui",
+                          "condition": "true",
+                          "folders": [],
+                          "files": [
+                            {
+                              "name": "${moduleName}ViewImpl.java",
+                              "template": "module/gwt/multi/__artifactId__-frontend-ui/src/main/java.__rootPackage__.__subpackage__.client/views/ui/__moduleName__ViewImpl.java",
+                              "type": "VELOCITY"
+                            }
+                          ]
+                        }
+                      ],
+                      "files": []
+                    }
+                  ],
+                  "files": [
+                    {
+                      "name": "${moduleName}UIClientModule.java",
+                      "template": "module/gwt/multi/__artifactId__-frontend-ui/src/main/java.__rootPackage__.__subpackage__.client/__moduleName__UIClientModule.java",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                }
+              ],
+              "files": [
+                {
+                  "name": "module.gwt.xml",
+                  "template": "module/gwt/multi/__artifactId__-frontend-ui/src/main/module.gwt.xml",
+                  "type": "VELOCITY"
+                }
+              ]
+            }
+          ],
+          "files": []
+        }
+      ],
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/gwt/multi/__artifactId__-frontend-ui/pom.xml",
+          "type": "VELOCITY"
+        }
+      ]
+    },
+    {
+      "name": "${artifactId}-shared",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "src.main.java.${rootPackage}.${subpackage}.shared",
+          "condition": "true",
+          "folders": [
+            {
+              "name": "services",
+              "condition": "true",
+              "folders": [],
+              "files": [
+                {
+                  "name": "${moduleName}Service.java",
+                  "template": "module/gwt/multi/__artifactId__-shared/src.main.java.__rootPackage__.__subpackage__.shared/services/__moduleName__Service.java",
+                  "type": "VELOCITY"
+                }
+              ]
+            },
+            {
+              "name": "events",
+              "condition": "true",
+              "folders": [],
+              "files": [
+                {
+                  "name": "${moduleName}Event.java",
+                  "template": "module/gwt/multi/__artifactId__-shared/src.main.java.__rootPackage__.__subpackage__.shared/events/__moduleName__Event.java",
+                  "type": "VELOCITY"
+                }
+              ]
+            },
+            {
+              "name": "model",
+              "condition": "true",
+              "folders": [],
+              "files": [
+                {
+                  "name": "${moduleName}Response.java",
+                  "template": "module/gwt/multi/__artifactId__-shared/src.main.java.__rootPackage__.__subpackage__.shared/model/__moduleName__Response.java",
+                  "type": "VELOCITY"
+                },
+                {
+                  "name": "${moduleName}Request.java",
+                  "template": "module/gwt/multi/__artifactId__-shared/src.main.java.__rootPackage__.__subpackage__.shared/model/__moduleName__Request.java",
+                  "type": "VELOCITY"
+                }
+              ]
+            }
+          ],
+          "files": []
+        }
+      ],
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/gwt/multi/__artifactId__-shared/pom.xml",
+          "type": "VELOCITY"
+        }
+      ]
+    },
+    {
+      "name": "${artifactId}-frontend",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "src",
+          "condition": "true",
+          "folders": [
+            {
+              "name": "test.java.${rootPackage}.${subpackage}.client",
+              "condition": "${generateTests}",
+              "folders": [
+                {
+                  "name": "presenters",
+                  "condition": "true",
+                  "folders": [],
+                  "files": [
+                    {
+                      "name": "${moduleName}PresenterSpy.java",
+                      "template": "module/gwt/multi/__artifactId__-frontend/src/test.java.__rootPackage__.__subpackage__.client/presenters/__moduleName__PresenterSpy.java",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                },
+                {
+                  "name": "views",
+                  "condition": "true",
+                  "folders": [],
+                  "files": [
+                    {
+                      "name": "Fake${moduleName}View.java",
+                      "template": "module/gwt/multi/__artifactId__-frontend/src/test.java.__rootPackage__.__subpackage__.client/views/Fake__moduleName__View.java",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                }
+              ],
+              "files": [
+                {
+                  "name": "${moduleName}ClientModuleTest.java",
+                  "template": "module/gwt/multi/__artifactId__-frontend/src/test.java.__rootPackage__.__subpackage__.client/__moduleName__ClientModuleTest.java",
+                  "type": "VELOCITY"
+                },
+                {
+                  "name": "${moduleName}ClientModuleTestSuite.java",
+                  "template": "module/gwt/multi/__artifactId__-frontend/src/test.java.__rootPackage__.__subpackage__.client/__moduleName__ClientModuleTestSuite.java",
+                  "type": "VELOCITY"
+                }
+              ]
+            },
+            {
+              "name": "main",
+              "condition": "true",
+              "folders": [
+                {
+                  "name": "java.${rootPackage}.${subpackage}.client",
+                  "condition": "true",
+                  "folders": [
+                    {
+                      "name": "presenters",
+                      "condition": "true",
+                      "folders": [],
+                      "files": [
+                        {
+                          "name": "${moduleName}Proxy.java",
+                          "template": "module/gwt/multi/__artifactId__-frontend/src/main/java.__rootPackage__.__subpackage__.client/presenters/__moduleName__Proxy.java",
+                          "type": "VELOCITY"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "views",
+                      "condition": "true",
+                      "folders": [],
+                      "files": [
+                        {
+                          "name": "${moduleName}View.java",
+                          "template": "module/gwt/multi/__artifactId__-frontend/src/main/java.__rootPackage__.__subpackage__.client/views/__moduleName__View.java",
+                          "type": "VELOCITY"
+                        }
+                      ]
+                    }
+                  ],
+                  "files": [
+                    {
+                      "name": "${moduleName}ClientModule.java",
+                      "template": "module/gwt/multi/__artifactId__-frontend/src/main/java.__rootPackage__.__subpackage__.client/__moduleName__ClientModule.java",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                }
+              ],
+              "files": [
+                {
+                  "name": "module.gwt.xml",
+                  "template": "module/gwt/multi/__artifactId__-frontend/src/main/module.gwt.xml",
+                  "type": "VELOCITY"
+                }
+              ]
+            }
+          ],
+          "files": []
+        }
+      ],
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/gwt/multi/__artifactId__-frontend/pom.xml",
+          "type": "VELOCITY"
+        }
+      ]
+    },
+    {
+      "name": "${artifactId}-backend",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "src",
+          "condition": "true",
+          "folders": [
+            {
+              "name": "main.java.${rootPackage}.${subpackage}.server",
+              "condition": "true",
+              "folders": [
+                {
+                  "name": "resources",
+                  "condition": "true",
+                  "folders": [],
+                  "files": [
+                    {
+                      "name": "${moduleName}Resource.java",
+                      "template": "module/gwt/multi/__artifactId__-backend/src/main.java.__rootPackage__.__subpackage__.server/resources/__moduleName__Resource.java",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                }
+              ],
+              "files": [
+                {
+                  "name": "package-info.java",
+                  "template": "module/gwt/multi/__artifactId__-backend/src/main.java.__rootPackage__.__subpackage__.server/package-info.java",
+                  "type": "VELOCITY"
+                }
+              ]
+            }
+          ],
+          "files": []
+        }
+      ],
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "module/gwt/multi/__artifactId__-backend/pom.xml",
+          "type": "VELOCITY"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "pom.xml",
+      "template": "module/gwt/multi/pom.xml",
+      "type": "VELOCITY"
+    }
+  ]
+}

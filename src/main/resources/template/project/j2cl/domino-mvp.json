@@ -1,0 +1,239 @@
+{
+  "name": "${artifactId}",
+  "condition": "true",
+  "folders": [
+    {
+      "name": "${name}-frontend",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "src",
+          "condition": "true",
+          "folders": [
+            {
+              "name": "main",
+              "condition": "true",
+              "folders": [
+                {
+                  "name": "java",
+                  "condition": "true",
+                  "folders": [
+                    {
+                      "name": "${rootPackage}",
+                      "condition": "true",
+                      "folders": [],
+                      "files": [
+                        {
+                          "name": "AppClientModule.java",
+                          "template": "app/j2cl/mvp/__name__-frontend/src/main/java/__rootPackage__/AppClientModule.java",
+                          "type": "VELOCITY"
+                        },
+                        {
+                          "name": "AppClientModule.native.js",
+                          "template": "app/j2cl/mvp/__name__-frontend/src/main/java/__rootPackage__/AppClientModule.native.js",
+                          "type": "VELOCITY"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "com",
+                      "condition": "true",
+                      "folders": [
+                        {
+                          "name": "google",
+                          "condition": "true",
+                          "folders": [
+                            {
+                              "name": "gwt",
+                              "condition": "true",
+                              "folders": [
+                                {
+                                  "name": "core",
+                                  "condition": "true",
+                                  "folders": [
+                                    {
+                                      "name": "client",
+                                      "condition": "true",
+                                      "folders": [],
+                                      "files": [
+                                        {
+                                          "name": "EntryPoint.java",
+                                          "template": "app/j2cl/mvp/__name__-frontend/src/main/java/com/google/gwt/core/client/EntryPoint.java",
+                                          "type": "VELOCITY"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "files": []
+                                }
+                              ],
+                              "files": []
+                            }
+                          ],
+                          "files": []
+                        }
+                      ],
+                      "files": []
+                    }
+                  ],
+                  "files": []
+                },
+                {
+                  "name": "webapp",
+                  "condition": "true",
+                  "folders": [
+                    {
+                      "name": "WEB-INF",
+                      "condition": "true",
+                      "folders": [],
+                      "files": [
+                        {
+                          "name": "web.xml",
+                          "template": "app/j2cl/mvp/__name__-frontend/src/main/webapp/WEB-INF/web.xml",
+                          "type": "VELOCITY"
+                        }
+                      ]
+                    }
+                  ],
+                  "files": []
+                }
+              ],
+              "files": []
+            }
+          ],
+          "files": []
+        }
+      ],
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "app/j2cl/mvp/__name__-frontend/pom.xml",
+          "type": "VELOCITY"
+        }
+      ]
+    },
+    {
+      "name": "${name}-backend",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "src",
+          "condition": "true",
+          "folders": [
+            {
+              "name": "main",
+              "condition": "true",
+              "folders": [
+                {
+                  "name": "resources",
+                  "condition": "true",
+                  "folders": [
+                    {
+                      "name": "app",
+                      "condition": "true",
+                      "folders": [],
+                      "files": [
+                        {
+                          "name": "${name}.css",
+                          "template": "app/j2cl/mvp/__name__-backend/src/main/resources/app/__name__.css",
+                          "type": "VELOCITY"
+                        },
+                        {
+                          "name": "favicon.ico",
+                          "template": "app/j2cl/mvp/__name__-backend/src/main/resources/app/favicon.ico",
+                          "type": "RESOURCE"
+                        },
+                        {
+                          "name": "index.html",
+                          "template": "app/j2cl/mvp/__name__-backend/src/main/resources/app/index.html",
+                          "type": "VELOCITY"
+                        }
+                      ]
+                    }
+                  ],
+                  "files": [
+                    {
+                      "name": "config.json",
+                      "template": "app/j2cl/mvp/__name__-backend/src/main/resources/config.json",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                }
+              ],
+              "files": []
+            }
+          ],
+          "files": []
+        }
+      ],
+      "files": [
+        {
+          "name": "pom.xml",
+          "template": "app/j2cl/mvp/__name__-backend/pom.xml",
+          "type": "VELOCITY"
+        }
+      ]
+    },
+    {
+      "name": ".idea",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "runConfigurations",
+          "condition": "true",
+          "folders": [],
+          "files": [
+            {
+              "name": "process_sources.xml",
+              "template": "app/j2cl/mvp/.idea/runConfigurations/process_sources.xml",
+              "type": "VELOCITY"
+            },
+            {
+              "name": "js_debug.xml",
+              "template": "app/j2cl/mvp/.idea/runConfigurations/js_debug.xml",
+              "type": "VELOCITY"
+            },
+            {
+              "name": "${name}-dev.xml",
+              "template": "app/j2cl/mvp/.idea/runConfigurations/__name__-dev.xml",
+              "type": "VELOCITY"
+            },
+            {
+              "name": "ALL_TESTS.xml",
+              "template": "app/j2cl/mvp/.idea/runConfigurations/ALL_TESTS.xml",
+              "type": "VELOCITY"
+            },
+            {
+              "name": "super_dev_mode.xml",
+              "template": "app/j2cl/mvp/.idea/runConfigurations/super_dev_mode.xml",
+              "type": "VELOCITY"
+            },
+            {
+              "name": "${name}.xml",
+              "template": "app/j2cl/mvp/.idea/runConfigurations/__name__.xml",
+              "type": "VELOCITY"
+            },
+            {
+              "name": "Development.xml",
+              "template": "app/j2cl/mvp/.idea/runConfigurations/Development.xml",
+              "type": "VELOCITY"
+            }
+          ]
+        }
+      ],
+      "files": []
+    }
+  ],
+  "files": [
+    {
+      "name": "pom.xml",
+      "template": "app/j2cl/mvp/pom.xml",
+      "type": "VELOCITY"
+    },
+    {
+      "name": "README.md",
+      "template": "app/j2cl/mvp/README.md",
+      "type": "VELOCITY"
+    }
+  ]
+}

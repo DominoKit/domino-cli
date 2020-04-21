@@ -55,33 +55,38 @@ Commands:
 ```
 
 ```
-Usage: dominokit generate app [-d=<workingDire>] -g=<groupId> -n=<name> [COMMAND]
+Usage: domino generate app [-j] [-d=<workingDire>] -g=<groupId> -n=<name>
+                           [-t=<type>] [COMMAND]
 Use with generate command to generate a domino-mvp template project
   -d, --dir=<workingDire>   absolute path to the directory where the project
                               should be generated.
   -g, --groupId=<groupId>   The project group ID, this will be used also for
                               root package name
+  -j, --j2cl                if true will generate a module that target j2cl
+                              compiler.
   -n, --name=<name>         The project name, also will be use as the artifact
                               ID
   -t, --type=<type>         The type of the project, available types are [mvp,
-                              ui], [mvp] will generate a domino-mvp
-                              application, [ui] will generate simple gwt with
-                              domino-ui application.
+                              basic], [mvp] will generate a domino-mvp
+                              application, [basic] will generate simple gwt
+                              with domino-ui application.
 Commands:
   help  Displays help information about the specified command
 ```
 
 ```
-Usage: dominokit generate module [-st] [-d=<workingDire>] -n=<name>
+Usage: domino generate module [-jst] [-d=<workingDire>] -n=<name>
                               [-sp=<subPackage>] [COMMAND]
 Use with generate command to generate a domino-mvp module template
   -d, --dir=<workingDire>   absolute path to the module where the project
                               should be generated.
+  -j, --j2cl                if true will generate a module that target j2cl
+                              compiler.
   -n, --name=<name>         The module name, also will be use as the artifact ID
   -s, --single              if true will split the module into more submodules,
                               [name]-backend, [name]-frontend, [name]
                               -frontend-ui, [name]-shared
-  -sp, --subpackage=<subPackage>
+      -sp, --subpackage=<subPackage>
                             the module sub package, this will be appended to
                               the application rootPackage
   -t, --tests               if true will generate tests for a multi submodules

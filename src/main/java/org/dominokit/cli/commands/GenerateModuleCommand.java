@@ -44,6 +44,13 @@ public class GenerateModuleCommand implements Runnable {
     private boolean generateTests = false;
 
     @Option(
+            names = {"-j", "--j2cl"},
+            defaultValue = "false",
+            description = "if true will generate a module that target j2cl compiler."
+    )
+    private boolean j2cl = false;
+
+    @Option(
             names = {"-sp", "--subpackage"},
             description = "the module sub package, this will be appended to the application rootPackage"
     )
@@ -83,6 +90,7 @@ public class GenerateModuleCommand implements Runnable {
             module.setFrontendPom(frontendPom);
             module.setArtifactId(name);
             module.setGenerateTests(generateTests);
+            module.setJ2cl(j2cl);
 
             if (isNull(subPackage) || subPackage.trim().isEmpty()) {
                 subPackage = name.toLowerCase()

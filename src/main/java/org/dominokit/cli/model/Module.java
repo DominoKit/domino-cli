@@ -14,6 +14,7 @@ public class Module implements IsContext {
     private Model backendPom;
     private Model frontendPom;
     private boolean generateTests;
+    private boolean j2cl;
 
     public Module(Project project) {
         this.project = project;
@@ -70,6 +71,14 @@ public class Module implements IsContext {
 
     public void setFrontendPom(Model frontendPom) {
         this.frontendPom = frontendPom;
+    }
+
+    public boolean isJ2cl() {
+        return j2cl;
+    }
+
+    public void setJ2cl(boolean j2cl) {
+        this.j2cl = j2cl;
     }
 
     @Override

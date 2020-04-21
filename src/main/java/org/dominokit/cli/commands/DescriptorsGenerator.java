@@ -15,13 +15,22 @@ public class DescriptorsGenerator {
 
     public static void generate() {
         try {
-            generateDescriptor(Paths.get("src/main/resources/app/mvp"), "domino-mvp.json", "project");
-            generateDescriptor(Paths.get("src/main/resources/app/ui"), "domino-ui.json", "project");
-            generateDescriptor(Paths.get("src/main/resources/module/single"), "single.json", "module");
+            generateDescriptor(Paths.get("src/main/resources/app/gwt/mvp"), "domino-mvp.json", "project/gwt");
+            generateDescriptor(Paths.get("src/main/resources/app/gwt/basic"), "domino-basic.json", "project/gwt");
+            generateDescriptor(Paths.get("src/main/resources/app/j2cl/mvp"), "domino-mvp.json", "project/j2cl");
+            generateDescriptor(Paths.get("src/main/resources/app/j2cl/basic"), "domino-basic.json", "project/j2cl");
 
-            TemplateConfig templateConfig = new TemplateConfig("${artifactId}", Paths.get("src/main/resources/module/multi"));
-            templateConfig.getConditions().put("module/multi/__artifactId__-frontend/src/test.java.__rootPackage__.__subpackage__.client", "${generateTests}");
-            generateDescriptor(templateConfig, "multi.json", "module");
+            generateDescriptor(Paths.get("src/main/resources/module/gwt/single"), "single.json", "module/gwt");
+
+            TemplateConfig multiGwtModuleConfig = new TemplateConfig("${artifactId}", Paths.get("src/main/resources/module/gwt/multi"));
+            multiGwtModuleConfig.getConditions().put("module/gwt/multi/__artifactId__-frontend/src/test.java.__rootPackage__.__subpackage__.client", "${generateTests}");
+            generateDescriptor(multiGwtModuleConfig, "multi.json", "module/gwt");
+
+            generateDescriptor(Paths.get("src/main/resources/module/j2cl/single"), "single.json", "module/j2cl");
+
+            TemplateConfig multiJ2clModuleConfig = new TemplateConfig("${artifactId}", Paths.get("src/main/resources/module/j2cl/multi"));
+            multiJ2clModuleConfig.getConditions().put("module/j2cl/multi/__artifactId__-frontend/src/test.java.__rootPackage__.__subpackage__.client", "${generateTests}");
+            generateDescriptor(multiJ2clModuleConfig, "multi.json", "module/j2cl");
 
         } catch (IOException e) {
             e.printStackTrace();
