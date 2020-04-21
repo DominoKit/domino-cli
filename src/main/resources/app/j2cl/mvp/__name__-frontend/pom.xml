@@ -72,6 +72,7 @@
                     <defines>
                         <locale>en_US</locale>
                     </defines>
+                    <webappDirectory>${project.build.directory}/${project.artifactId}-${project.version}/app</webappDirectory>
                     <!-- workaround for how closure generates sourcemaps, and how chrome interprets them. not needed in firefox -->
                     <initialScriptFilename>${project.artifactId}.js</initialScriptFilename>
                 </configuration>
