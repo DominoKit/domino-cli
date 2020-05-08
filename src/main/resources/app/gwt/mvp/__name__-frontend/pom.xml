@@ -15,7 +15,7 @@
     <packaging>gwt-app</packaging>
 
     <properties>
-        <extra.directory>${project.build.directory}/${project.build.finalName}/app</extra.directory>
+        <extra.directory>${project.build.directory}/${project.build.finalName}/${name}</extra.directory>
     </properties>
 
     <dependencies>
@@ -63,7 +63,7 @@
                 <configuration>
                     <extra>${extra.directory}/gwt/extra</extra>
                     <moduleName>${rootPackage}.AppClientModule</moduleName>
-                    <moduleShortName>app</moduleShortName>
+                    <moduleShortName>${name}</moduleShortName>
                 </configuration>
             </plugin>
             <plugin>

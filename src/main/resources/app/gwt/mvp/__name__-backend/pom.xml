@@ -125,7 +125,7 @@
                                 <systemProperty>
                                     <key>domino.webroot.location</key>
                                     <value>
-                                        ${basedir}/../${name}-frontend/target/${name}-frontend-${version}/app
+                                        ${basedir}/../${name}-frontend/target/${name}-frontend-${version}/${name}
                                     </value>
                                 </systemProperty>
                             </systemProperties>
@@ -148,7 +148,7 @@
                             <systemProperties>
                                 <systemProperty>
                                     <key>domino.webroot.location</key>
-                                    <value>${basedir}/../target/gwt/launcherDir/app
+                                    <value>${basedir}/../target/gwt/launcherDir/${name}
                                     </value>
                                 </systemProperty>
                             </systemProperties>
