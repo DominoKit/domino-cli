@@ -7,7 +7,7 @@ jobs:
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
-      - name:
+      - name: gradle
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v1
