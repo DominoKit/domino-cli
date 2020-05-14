@@ -78,7 +78,7 @@ public final class TemplateFileBeanJsonDeserializerImpl extends AbstractBeanJson
     map.put("type", new BeanPropertyDeserializer<TemplateFile, TemplateType>() {
       @Override
       protected JsonDeserializer<?> newDeserializer() {
-        return EnumJsonDeserializer.newInstance(TemplateType.class);
+        return EnumJsonDeserializer.newInstance(TemplateType.class,TemplateType.values());
       }
 
       @Override

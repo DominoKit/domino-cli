@@ -141,7 +141,9 @@ public class Folder {
                 folder.write(path, context);
             } else {
                 Path targetPath = Paths.get(path.toAbsolutePath().toString(), name);
-                Files.createDirectory(targetPath);
+                if(!Files.exists(targetPath)) {
+                    Files.createDirectory(targetPath);
+                }
 
                 for (ProjectFile projectFile : files) {
                     projectFile.write(targetPath, context);
