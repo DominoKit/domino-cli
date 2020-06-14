@@ -107,6 +107,17 @@ public final class ProjectBeanJsonDeserializerImpl extends AbstractBeanJsonDeser
         bean.setRootPackage(value);
       }
     });
+    map.put("moduleShortName", new BeanPropertyDeserializer<Project, String>() {
+      @Override
+      protected JsonDeserializer<?> newDeserializer() {
+        return StringJsonDeserializer.getInstance();
+      }
+
+      @Override
+      public void setValue(Project bean, String value, JsonDeserializationContext ctx) {
+        bean.setModuleShortName(value);
+      }
+    });
     return map;
   }
 }

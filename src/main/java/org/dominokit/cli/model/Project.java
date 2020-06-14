@@ -11,6 +11,7 @@ public class Project implements IsContext {
     private String artifactId;
     private String version;
     private String rootPackage;
+    private String moduleShortName;
 
     public String getName() {
         return name;
@@ -52,6 +53,14 @@ public class Project implements IsContext {
         this.rootPackage = rootPackage;
     }
 
+    public String getModuleShortName() {
+        return moduleShortName;
+    }
+
+    public void setModuleShortName(String moduleShortName) {
+        this.moduleShortName = moduleShortName;
+    }
+
     @Override
     public VelocityContext asContext() {
         VelocityContext context = new VelocityContext();
@@ -60,6 +69,7 @@ public class Project implements IsContext {
         context.put("groupId", groupId);
         context.put("version", version);
         context.put("rootPackage", rootPackage);
+        context.put("moduleShortName", moduleShortName);
         return context;
     }
 }

@@ -64,23 +64,23 @@
                   "condition": "true",
                   "folders": [
                     {
-                      "name": "app",
+                      "name": "${moduleShortName}",
                       "condition": "true",
                       "folders": [],
                       "files": [
                         {
                           "name": "${name}.css",
-                          "template": "app/gwt/mvp/__name__-backend/src/main/resources/app/__name__.css",
+                          "template": "app/gwt/mvp/__name__-backend/src/main/resources/__moduleShortName__/__name__.css",
                           "type": "VELOCITY"
                         },
                         {
                           "name": "favicon.ico",
-                          "template": "app/gwt/mvp/__name__-backend/src/main/resources/app/favicon.ico",
+                          "template": "app/gwt/mvp/__name__-backend/src/main/resources/__moduleShortName__/favicon.ico",
                           "type": "RESOURCE"
                         },
                         {
                           "name": "index.html",
-                          "template": "app/gwt/mvp/__name__-backend/src/main/resources/app/index.html",
+                          "template": "app/gwt/mvp/__name__-backend/src/main/resources/__moduleShortName__/index.html",
                           "type": "VELOCITY"
                         }
                       ]

@@ -55,7 +55,24 @@ public class MultiModuleGenerator {
                                 "\n\t\t\t<artifactId>" + module.getArtifactId() + "-frontend</artifactId>" +
                                 "\n\t\t\t<version>${project.version}</version>" +
                                 "\n\t\t</dependency>" +
+                                "\n" +
+                                "\n\t</dependencies>");
 
+        if(!module.isJ2cl()) {
+            frontEndPomString = frontEndPomString
+                    .replace("</dependencies>",
+                            "\n\t\t<dependency>" +
+                                    "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
+                                    "\n\t\t\t<artifactId>" + module.getArtifactId() + "-frontend</artifactId>" +
+                                    "\n\t\t\t<version>${project.version}</version>" +
+                                    "\n\t\t\t<classifier>sources</classifier>" +
+                                    "\n\t\t</dependency>" +
+                                    "\n" +
+                                    "\n\t</dependencies>");
+        }
+
+        frontEndPomString = frontEndPomString
+                .replace("</dependencies>",
                                 "\n" +
                                 "\n\t\t<dependency>" +
                                 "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
@@ -64,6 +81,21 @@ public class MultiModuleGenerator {
                                 "\n\t\t</dependency>" +
                                 "\n" +
                                 "\n\t</dependencies>");
+
+        if(!module.isJ2cl()){
+
+            frontEndPomString = frontEndPomString
+                    .replace("</dependencies>",
+                            "\n" +
+                                    "\n\t\t<dependency>" +
+                                    "\n\t\t\t<groupId>" + module.getProject().getGroupId() + "</groupId>" +
+                                    "\n\t\t\t<artifactId>" + module.getArtifactId() + "-frontend-ui</artifactId>" +
+                                    "\n\t\t\t<version>${project.version}</version>" +
+                                    "\n\t\t\t<classifier>sources</classifier>" +
+                                    "\n\t\t</dependency>" +
+                                    "\n" +
+                                    "\n\t</dependencies>");
+        }
 
         FileUtils.write(module.getFrontendPom().getPomFile(), frontEndPomString, StandardCharsets.UTF_8);
     }

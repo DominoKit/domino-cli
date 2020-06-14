@@ -72,7 +72,7 @@
           </execution>
         </executions>
         <configuration>
-          <entrypoint>org.dominokit.samples.App</entrypoint>
+          <entrypoint>${rootPackage}.App</entrypoint>
           <externs>
             <extern>${project.basedir}/src/main/externs/svg.js</extern>
           </externs>

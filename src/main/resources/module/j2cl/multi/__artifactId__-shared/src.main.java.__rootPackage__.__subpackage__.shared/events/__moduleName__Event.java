@@ -9,4 +9,8 @@ public class ${moduleName}Event extends ActivationEvent {
     public ${moduleName}Event(boolean status) {
         super(status);
     }
+
+    public ${moduleName}Event(String serializedEvent) {
+        super(serializedEvent);
+    }
 }

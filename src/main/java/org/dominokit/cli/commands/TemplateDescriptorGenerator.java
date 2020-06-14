@@ -38,6 +38,9 @@ public class TemplateDescriptorGenerator {
                     if(subFile.getName().contains("__artifactId__")){
                         finalName= finalName.replace("__artifactId__","${artifactId}");
                     }
+                    if(subFile.getName().contains("__moduleShortName__")){
+                        finalName= finalName.replace("__moduleShortName__","${moduleShortName}");
+                    }
                     Folder folder = Folder.create(finalName);
                     folder.setCondition(templateConfig.getCondition(subFile));
                     currentFolder.append(folder);
@@ -53,6 +56,9 @@ public class TemplateDescriptorGenerator {
                     }
                     if(finalName.contains("__artifactId__")){
                         finalName = finalName.replace("__artifactId__", "${artifactId}");
+                    }
+                    if(subFile.getName().contains("__moduleShortName__")){
+                        finalName= finalName.replace("__moduleShortName__","${moduleShortName}");
                     }
                     templateFile.setName(finalName);
                     boolean resource = isResourceType(templateConfig.getResourcesExtensions(), subFile.getName());

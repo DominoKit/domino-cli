@@ -67,6 +67,11 @@ public class GenerateAppCommand implements Runnable {
         project.setGroupId(groupId);
         project.setVersion(VERSION);
         project.setRootPackage(groupId);
+        project.setModuleShortName(name
+                .replace("-", "")
+                .replace(".","")
+                .replace(" ","")
+        );
 
         try {
 

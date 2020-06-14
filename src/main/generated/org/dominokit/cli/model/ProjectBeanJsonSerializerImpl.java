@@ -20,7 +20,7 @@ public final class ProjectBeanJsonSerializerImpl extends AbstractBeanJsonSeriali
 
   @Override
   protected BeanPropertySerializer[] initSerializers() {
-    BeanPropertySerializer[] result = new BeanPropertySerializer[5];
+    BeanPropertySerializer[] result = new BeanPropertySerializer[6];
     result[0] = new BeanPropertySerializer<Project, String>("name") {
       @Override
       protected JsonSerializer<?> newSerializer() {
@@ -74,6 +74,17 @@ public final class ProjectBeanJsonSerializerImpl extends AbstractBeanJsonSeriali
       @Override
       public String getValue(Project bean, JsonSerializationContext ctx) {
         return bean.getRootPackage();
+      }
+    };
+    result[5] = new BeanPropertySerializer<Project, String>("moduleShortName") {
+      @Override
+      protected JsonSerializer<?> newSerializer() {
+        return StringJsonSerializer.getInstance();
+      }
+
+      @Override
+      public String getValue(Project bean, JsonSerializationContext ctx) {
+        return bean.getModuleShortName();
       }
     };
     return result;
