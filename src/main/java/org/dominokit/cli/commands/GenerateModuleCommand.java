@@ -12,6 +12,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static picocli.CommandLine.*;
 
 @Command(
@@ -69,7 +70,6 @@ public class GenerateModuleCommand implements Runnable {
     public void run() {
 
 
-
         PathUtils.setWorkingDir(workingDire);
 
         try {
@@ -84,9 +84,15 @@ public class GenerateModuleCommand implements Runnable {
             Project project = new Project();
 
             project.setName(artifactId);
-            project.setGroupId(projectPom.getGroupId());
-            project.setRootPackage(projectPom.getGroupId());
-            project.setVersion(projectPom.getVersion());
+            if (nonNull(projectPom.getParent())) {
+                project.setGroupId(projectPom.getParent().getGroupId());
+                project.setRootPackage(projectPom.getParent().getGroupId());
+                project.setVersion(projectPom.getParent().getVersion());
+            } else {
+                project.setGroupId(projectPom.getGroupId());
+                project.setRootPackage(projectPom.getGroupId());
+                project.setVersion(projectPom.getVersion());
+            }
             project.setArtifactId(projectPom.getArtifactId());
 
             Module module = new Module(project);
@@ -104,9 +110,9 @@ public class GenerateModuleCommand implements Runnable {
             }
             module.setSubPackage(subPackage);
 
-            if(single){
+            if (single) {
                 new SingleModuleGenerator().generate(module);
-            }else{
+            } else {
                 new MultiModuleGenerator().generate(module);
             }
 
@@ -125,7 +131,7 @@ public class GenerateModuleCommand implements Runnable {
                 "\ngenerateTests=" + generateTests +
                 "\nj2cl=" + j2cl +
                 "\nsubPackage=" + subPackage +
-                "\nworkingDire=" + workingDire ;
+                "\nworkingDire=" + workingDire;
     }
 
     private void addModule(Module module) throws IOException {
