@@ -58,7 +58,7 @@
                 <plugin>
                     <groupId>com.vertispan.j2cl</groupId>
                     <artifactId>j2cl-maven-plugin</artifactId>
-                    <version>0.13-SNAPSHOT</version>
+                    <version>0.15-SNAPSHOT</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-source-plugin</artifactId>

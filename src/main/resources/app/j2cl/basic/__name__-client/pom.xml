@@ -27,10 +27,16 @@
       <artifactId>jsinterop-annotations</artifactId>
       <version>2.0.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.google.elemental2/elemental2-core -->
     <dependency>
-      <groupId>org.dominokit</groupId>
-      <artifactId>domino-ui</artifactId>
-      <version>${domino.ui.version}</version>
+      <groupId>com.google.elemental2</groupId>
+      <artifactId>elemental2-core</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.elemental2</groupId>
+      <artifactId>elemental2-dom</artifactId>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
 
@@ -72,7 +78,6 @@
           </execution>
         </executions>
         <configuration>
-          <entrypoint>${rootPackage}.App</entrypoint>
           <externs>
             <extern>${project.basedir}/src/main/externs/svg.js</extern>
           </externs>
