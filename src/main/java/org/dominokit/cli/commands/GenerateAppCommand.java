@@ -1,15 +1,22 @@
 package org.dominokit.cli.commands;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.maven.model.Model;
+import org.dominokit.cli.PomUtil;
+import org.dominokit.cli.model.Module;
 import org.dominokit.cli.model.Project;
 import org.dominokit.cli.structure.files.VelocityContentProcessor;
 import org.dominokit.cli.structure.folders.Folder;
 import org.dominokit.cli.structure.folders.Folder_MapperImpl;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static picocli.CommandLine.*;
 
 @Command(
@@ -31,8 +38,7 @@ public class GenerateAppCommand implements Runnable {
 
     @Option(
             names = {"-g", "--groupId"},
-            description = "The project group ID, this will be used also for root package name",
-            required = true
+            description = "The project group ID, this will be used also for root package name"
     )
     private String groupId;
 
@@ -59,18 +65,37 @@ public class GenerateAppCommand implements Runnable {
     @Override
     public void run() {
 
+        Model parentPom = null;
         PathUtils.setWorkingDir(workingDire);
+        try {
+            parentPom = PomUtil.asModel("");
+        } catch (Exception e) {
+            LOGGER.info("No parent pom was found, creating a root project.");
+        }
 
         Project project = new Project();
+
         project.setName(name);
         project.setArtifactId(name);
-        project.setGroupId(groupId);
-        project.setVersion(VERSION);
+
+
+        if (nonNull(parentPom)) {
+            project.setVersion(parentPom.getVersion());
+            project.setParentArtifactId(parentPom.getArtifactId());
+            project.setHasParent(true);
+            project.setGroupId(parentPom.getGroupId());
+            if(isNull(groupId)) {
+                groupId = parentPom.getGroupId();
+            }
+        } else {
+            project.setVersion(VERSION);
+        }
+
         project.setRootPackage(groupId);
         project.setModuleShortName(name
                 .replace("-", "")
-                .replace(".","")
-                .replace(" ","")
+                .replace(".", "")
+                .replace(" ", "")
         );
 
         try {
@@ -81,20 +106,40 @@ public class GenerateAppCommand implements Runnable {
                     .read(projectTemplateConfig);
             folder.write(Paths.get(PathUtils.getUserDir()), project);
 
+            if(project.isHasParent()){
+                addProjectToParent(project, parentPom);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private String getTemplateByType(boolean j2cl, String type) {
-        String compiler = j2cl?"j2cl":"gwt";
+        String compiler = j2cl ? "j2cl" : "gwt";
 
-        if(type.equalsIgnoreCase("mvp")){
-            return "template/project/"+compiler+"/domino-mvp.json";
-        }else if(type.equalsIgnoreCase("basic")){
-            return "template/project/"+compiler+"/domino-basic.json";
+        if (type.equalsIgnoreCase("mvp")) {
+            return "template/project/" + compiler + "/domino-mvp.json";
+        } else if (type.equalsIgnoreCase("basic")) {
+            return "template/project/" + compiler + "/domino-basic.json";
         }
-        LOGGER.log(Level.SEVERE, "Unrecognized application type : "+type);
-        throw new IllegalArgumentException("Unrecognized application type : "+type);
+        LOGGER.log(Level.SEVERE, "Unrecognized application type : " + type);
+        throw new IllegalArgumentException("Unrecognized application type : " + type);
+    }
+
+    private void addProjectToParent(Project project, Model parentPomModel) throws IOException {
+
+        String parentPom;
+        try {
+            parentPom = PomUtil.asString(parentPomModel);
+            if (parentPom.contains("<modules>")) {
+                parentPom = parentPom.replace("</modules>", "\t<module>" + project.getArtifactId() + "</module>\n\t</modules>");
+            } else {
+                parentPom = parentPom.replace("</project>", "\n\t<modules>\n\t\t<module>" + project.getArtifactId() + "</module>\n\t</modules>\n</project>");
+            }
+            FileUtils.write(parentPomModel.getPomFile(), parentPom, StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

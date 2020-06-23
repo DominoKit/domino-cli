@@ -27,5 +27,4 @@ public class PomUtil {
         ModelReader modelReader = new DefaultModelReader();
         return modelReader.read(new File(pomPath.toAbsolutePath().toString()), null);
     }
-
 }

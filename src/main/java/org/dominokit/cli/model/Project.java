@@ -12,6 +12,8 @@ public class Project implements IsContext {
     private String version;
     private String rootPackage;
     private String moduleShortName;
+    private boolean hasParent = false;
+    private String parentArtifactId;
 
     public String getName() {
         return name;
@@ -61,6 +63,22 @@ public class Project implements IsContext {
         this.moduleShortName = moduleShortName;
     }
 
+    public boolean isHasParent() {
+        return hasParent;
+    }
+
+    public void setHasParent(boolean hasParent) {
+        this.hasParent = hasParent;
+    }
+
+    public String getParentArtifactId() {
+        return parentArtifactId;
+    }
+
+    public void setParentArtifactId(String parentArtifactId) {
+        this.parentArtifactId = parentArtifactId;
+    }
+
     @Override
     public VelocityContext asContext() {
         VelocityContext context = new VelocityContext();
@@ -70,6 +88,8 @@ public class Project implements IsContext {
         context.put("version", version);
         context.put("rootPackage", rootPackage);
         context.put("moduleShortName", moduleShortName);
+        context.put("hasParent", hasParent);
+        context.put("parentArtifactId", parentArtifactId);
         return context;
     }
 }
