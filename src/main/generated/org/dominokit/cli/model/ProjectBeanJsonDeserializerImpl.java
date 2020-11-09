@@ -1,5 +1,6 @@
 package org.dominokit.cli.model;
 
+import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Object;
 import java.lang.Override;
@@ -9,6 +10,7 @@ import org.dominokit.jacksonapt.JacksonContextProvider;
 import org.dominokit.jacksonapt.JsonDeserializationContext;
 import org.dominokit.jacksonapt.JsonDeserializer;
 import org.dominokit.jacksonapt.JsonDeserializerParameters;
+import org.dominokit.jacksonapt.deser.BooleanJsonDeserializer;
 import org.dominokit.jacksonapt.deser.StringJsonDeserializer;
 import org.dominokit.jacksonapt.deser.bean.AbstractBeanJsonDeserializer;
 import org.dominokit.jacksonapt.deser.bean.BeanPropertyDeserializer;
@@ -116,6 +118,28 @@ public final class ProjectBeanJsonDeserializerImpl extends AbstractBeanJsonDeser
       @Override
       public void setValue(Project bean, String value, JsonDeserializationContext ctx) {
         bean.setModuleShortName(value);
+      }
+    });
+    map.put("hasParent", new BeanPropertyDeserializer<Project, Boolean>() {
+      @Override
+      protected JsonDeserializer<?> newDeserializer() {
+        return BooleanJsonDeserializer.getInstance();
+      }
+
+      @Override
+      public void setValue(Project bean, Boolean value, JsonDeserializationContext ctx) {
+        bean.setHasParent(value);
+      }
+    });
+    map.put("parentArtifactId", new BeanPropertyDeserializer<Project, String>() {
+      @Override
+      protected JsonDeserializer<?> newDeserializer() {
+        return StringJsonDeserializer.getInstance();
+      }
+
+      @Override
+      public void setValue(Project bean, String value, JsonDeserializationContext ctx) {
+        bean.setParentArtifactId(value);
       }
     });
     return map;

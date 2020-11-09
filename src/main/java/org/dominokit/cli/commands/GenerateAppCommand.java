@@ -3,7 +3,6 @@ package org.dominokit.cli.commands;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Model;
 import org.dominokit.cli.PomUtil;
-import org.dominokit.cli.model.Module;
 import org.dominokit.cli.model.Project;
 import org.dominokit.cli.structure.files.VelocityContentProcessor;
 import org.dominokit.cli.structure.folders.Folder;
@@ -89,6 +88,7 @@ public class GenerateAppCommand implements Runnable {
             }
         } else {
             project.setVersion(VERSION);
+            project.setGroupId(groupId);
         }
 
         project.setRootPackage(groupId);

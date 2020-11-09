@@ -1,10 +1,12 @@
 package org.dominokit.cli.model;
 
+import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
 import org.dominokit.jacksonapt.JsonSerializationContext;
 import org.dominokit.jacksonapt.JsonSerializer;
+import org.dominokit.jacksonapt.ser.BooleanJsonSerializer;
 import org.dominokit.jacksonapt.ser.StringJsonSerializer;
 import org.dominokit.jacksonapt.ser.bean.AbstractBeanJsonSerializer;
 import org.dominokit.jacksonapt.ser.bean.BeanPropertySerializer;
@@ -20,7 +22,7 @@ public final class ProjectBeanJsonSerializerImpl extends AbstractBeanJsonSeriali
 
   @Override
   protected BeanPropertySerializer[] initSerializers() {
-    BeanPropertySerializer[] result = new BeanPropertySerializer[6];
+    BeanPropertySerializer[] result = new BeanPropertySerializer[8];
     result[0] = new BeanPropertySerializer<Project, String>("name") {
       @Override
       protected JsonSerializer<?> newSerializer() {
@@ -85,6 +87,28 @@ public final class ProjectBeanJsonSerializerImpl extends AbstractBeanJsonSeriali
       @Override
       public String getValue(Project bean, JsonSerializationContext ctx) {
         return bean.getModuleShortName();
+      }
+    };
+    result[6] = new BeanPropertySerializer<Project, Boolean>("hasParent") {
+      @Override
+      protected JsonSerializer<?> newSerializer() {
+        return BooleanJsonSerializer.getInstance();
+      }
+
+      @Override
+      public Boolean getValue(Project bean, JsonSerializationContext ctx) {
+        return bean.isHasParent();
+      }
+    };
+    result[7] = new BeanPropertySerializer<Project, String>("parentArtifactId") {
+      @Override
+      protected JsonSerializer<?> newSerializer() {
+        return StringJsonSerializer.getInstance();
+      }
+
+      @Override
+      public String getValue(Project bean, JsonSerializationContext ctx) {
+        return bean.getParentArtifactId();
       }
     };
     return result;

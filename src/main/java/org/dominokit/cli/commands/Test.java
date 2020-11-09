@@ -38,7 +38,10 @@ public class Test {
         String[] module3Args = new String[]{"gen", "module", "-n", "home", "-sp", "home.street", "-t","-d", out+"/sample"};
         commandLine.execute(module3Args);
 
-        String[] module4Args = new String[]{"gen", "app", "-t", "basic", "-n", "j2cltest", "--j2cl", "-g", "com.foo","-d", out};
+        String[] module4Args = new String[]{"gen", "app", "-t", "basic", "-n", "j2cltest", "--j2cl", "-g", "com.foo","-d", out+"/sample"};
         commandLine.execute(module4Args);
+
+        String[] basicGwt = new String[]{"gen", "app", "-t", "basic", "-n", "gwttest", "-g", "com.foo","-d", out+"/sample"};
+        commandLine.execute(basicGwt);
     }
 }

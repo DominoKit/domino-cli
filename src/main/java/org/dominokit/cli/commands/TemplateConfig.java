@@ -14,9 +14,7 @@ public class TemplateConfig {
     private Map<String, String> conditions = new HashMap<>();
 
     public TemplateConfig(String name, Path templateRoot) throws IOException {
-        Properties properties = new Properties();
-        properties.load(Test.class.getClassLoader().getResourceAsStream("cli-config.properties"));
-        resourcesExtensions = Arrays.asList(properties.getProperty("resources.extensions").split(","));
+        resourcesExtensions = CLIConfig.RESOURCE_EXTENSIONS;
         this.templateRoot = templateRoot;
         this.name = name;
     }
