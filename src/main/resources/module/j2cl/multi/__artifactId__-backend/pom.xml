@@ -18,17 +18,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.dominokit.domino.api</groupId>
-            <artifactId>domino-api-server</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-api-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.apt</groupId>
-            <artifactId>apt-server</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-apt-server</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.test</groupId>
-            <artifactId>domino-server-test</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-server-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

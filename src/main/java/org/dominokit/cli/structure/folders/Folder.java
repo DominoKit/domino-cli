@@ -3,7 +3,7 @@ package org.dominokit.cli.structure.folders;
 import org.dominokit.cli.model.IsContext;
 import org.dominokit.cli.structure.files.ProjectFile;
 import org.dominokit.cli.structure.files.TemplateFile;
-import org.dominokit.jacksonapt.annotation.JSONMapper;
+import org.dominokit.jackson.annotation.JSONMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;

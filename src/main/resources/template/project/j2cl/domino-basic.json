@@ -79,23 +79,6 @@
                   "files": []
                 },
                 {
-                  "name": "externs",
-                  "condition": "true",
-                  "folders": [],
-                  "files": [
-                    {
-                      "name": "w3c_clipboardevent.js",
-                      "template": "app/j2cl/basic/__name__-client/src/main/externs/w3c_clipboardevent.js",
-                      "type": "VELOCITY"
-                    },
-                    {
-                      "name": "svg.js",
-                      "template": "app/j2cl/basic/__name__-client/src/main/externs/svg.js",
-                      "type": "VELOCITY"
-                    }
-                  ]
-                },
-                {
                   "name": "webapp",
                   "condition": "true",
                   "folders": [
@@ -198,6 +181,11 @@
                     {
                       "name": "favicon.ico",
                       "template": "app/j2cl/basic/__name__-server/src/main/webapp/favicon.ico",
+                      "type": "RESOURCE"
+                    },
+                    {
+                      "name": "favicon.png",
+                      "template": "app/j2cl/basic/__name__-server/src/main/webapp/favicon.png",
                       "type": "RESOURCE"
                     },
                     {

@@ -3,7 +3,7 @@ package org.dominokit.cli.commands;
 import org.apache.commons.io.FileUtils;
 import org.dominokit.cli.structure.folders.Folder;
 import org.dominokit.cli.structure.folders.Folder_MapperImpl;
-import org.dominokit.jacksonapt.DefaultJsonSerializationContext;
+import org.dominokit.jackson.DefaultJsonSerializationContext;
 
 import java.io.File;
 import java.io.IOException;

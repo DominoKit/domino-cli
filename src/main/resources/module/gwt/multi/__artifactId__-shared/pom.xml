@@ -17,36 +17,36 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.dominokit.domino.api</groupId>
-            <artifactId>domino-api-shared</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-api-shared</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.jackson</groupId>
-            <artifactId>jackson-apt</artifactId>
-            <version>${jackson.version}</version>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-jackson</artifactId>
+            <version>${domino.jackson.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.jackson</groupId>
-            <artifactId>jackson-apt</artifactId>
-            <version>${jackson.version}</version>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-jackson</artifactId>
+            <version>${domino.jackson.version}</version>
             <classifier>sources</classifier>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.jackson</groupId>
-            <artifactId>jackson-apt-processor</artifactId>
-            <version>${jackson.version}</version>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-jackson-processor</artifactId>
+            <version>${domino.jackson.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.dominokit</groupId>
             <artifactId>domino-rest-shared</artifactId>
-            <version>1.0-rc.4-SNAPSHOT</version>
+            <version>${domino.rest.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.dominokit</groupId>
-            <artifactId>domino-rest-apt</artifactId>
-            <version>1.0-rc.4-SNAPSHOT</version>
+            <artifactId>domino-rest-processor</artifactId>
+            <version>${domino.rest.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

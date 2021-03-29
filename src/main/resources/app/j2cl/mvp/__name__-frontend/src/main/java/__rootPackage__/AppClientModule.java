@@ -8,7 +8,7 @@ import org.dominokit.domino.api.client.ClientApp;
 
 import org.dominokit.domino.gwt.client.app.DominoGWT;
 import org.dominokit.domino.view.GwtView;
-import org.dominokit.domino.rest.DominoRestConfig;
+import org.dominokit.rest.DominoRestConfig;
 
 import java.util.logging.Logger;
 

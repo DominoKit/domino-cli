@@ -1,7 +1,7 @@
 package org.dominokit.cli.model;
 
 import org.apache.velocity.VelocityContext;
-import org.dominokit.jacksonapt.annotation.JSONMapper;
+import org.dominokit.jackson.annotation.JSONMapper;
 
 @JSONMapper
 public class Project implements IsContext {

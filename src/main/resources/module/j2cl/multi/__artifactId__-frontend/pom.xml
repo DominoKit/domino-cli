@@ -15,12 +15,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.dominokit.domino.api</groupId>
-            <artifactId>domino-api-client</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-api-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.api</groupId>
-            <artifactId>domino-api-client</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-api-client</artifactId>
             <classifier>sources</classifier>
         </dependency>
         <dependency>
@@ -33,18 +33,18 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.apt</groupId>
-            <artifactId>apt-client</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-apt-client</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.test</groupId>
-            <artifactId>domino-client-test</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-client-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.apt</groupId>
-            <artifactId>apt-client-test</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-apt-client-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -60,14 +60,14 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.jackson</groupId>
-            <artifactId>jackson-apt</artifactId>
-            <version>${jackson.version}</version>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-jackson</artifactId>
+            <version>${domino.jackson.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.jackson</groupId>
-            <artifactId>jackson-apt-processor</artifactId>
-            <version>${jackson.version}</version>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-jackson-processor</artifactId>
+            <version>${domino.jackson.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -79,8 +79,8 @@
 
         <dependency>
             <groupId>org.dominokit</groupId>
-            <artifactId>domino-rest-gwt</artifactId>
-            <version>1.0-rc.4-SNAPSHOT</version>
+            <artifactId>domino-rest-client</artifactId>
+            <version>${domino.rest.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,7 +1,7 @@
 package org.dominokit.cli.structure.files;
 
 import org.dominokit.cli.model.IsContext;
-import org.dominokit.jacksonapt.annotation.JSONMapper;
+import org.dominokit.jackson.annotation.JSONMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;

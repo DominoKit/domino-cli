@@ -144,6 +144,11 @@
                           "type": "RESOURCE"
                         },
                         {
+                          "name": "favicon.png",
+                          "template": "app/j2cl/mvp/__name__-backend/src/main/resources/__moduleShortName__/favicon.png",
+                          "type": "RESOURCE"
+                        },
+                        {
                           "name": "index.html",
                           "template": "app/j2cl/mvp/__name__-backend/src/main/resources/__moduleShortName__/index.html",
                           "type": "VELOCITY"
@@ -186,11 +191,6 @@
             {
               "name": "process_sources.xml",
               "template": "app/j2cl/mvp/.idea/runConfigurations/process_sources.xml",
-              "type": "VELOCITY"
-            },
-            {
-              "name": "js_debug.xml",
-              "template": "app/j2cl/mvp/.idea/runConfigurations/js_debug.xml",
               "type": "VELOCITY"
             },
             {

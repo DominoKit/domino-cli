@@ -1,11 +1,10 @@
 # domino-cli
-CLI tool to generate domino projects and modules.
+CLI tools to generate domino projects and modules.
 
 ### How to install:
 
-navigate to [releases](https://github.com/DominoKit/domino-cli/releases) then download and install tour preferred package.
+navigate to [releases](https://github.com/DominoKit/domino-cli/releases) then download and install your preferred package.
 
-**npm** users can install the cli tool by executing `npm i dominokit`
 
 ### Usage :
 
@@ -17,12 +16,12 @@ e.g : to generate and application with name `sample` and groupId `org.dominokit.
 
 `dominokit gen app -n sample -g org.dominokit.samples` 
 
-for more help about the generate app command execute `dominokit gen app help`
+for more help about the generated app command execute `dominokit gen app help`
 
 
 - ##### Generate a module template 
 
-once an application template is generated, we cd inside the generated application e.g `cd sample`.
+once an application template is generated, we `cd` inside the generated application e.g `cd sample`.
 
 then to generate a new module with the name `layout` and sub-package `layout` we execute the command below
 

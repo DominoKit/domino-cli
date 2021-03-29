@@ -15,12 +15,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.dominokit.domino.api</groupId>
-            <artifactId>domino-api-client</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-api-client</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.api</groupId>
-            <artifactId>domino-api-client</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-api-client</artifactId>
             <classifier>sources</classifier>
         </dependency>
         <dependency>
@@ -28,22 +28,22 @@
             <artifactId>domino-slf4j-logger</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino</groupId>
-            <artifactId>domino-gwt-view</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-gwt-view</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.apt</groupId>
-            <artifactId>apt-client</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-apt-client</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.test</groupId>
-            <artifactId>domino-client-test</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-client-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.dominokit.domino.apt</groupId>
-            <artifactId>apt-client-test</artifactId>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-mvp-apt-client-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -65,10 +65,6 @@
             <groupId>${groupId}</groupId>
             <artifactId>${artifactId}-frontend</artifactId>
             <version>${version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.dominokit</groupId>
-            <artifactId>domino-ui</artifactId>
         </dependency>
     </dependencies>
 

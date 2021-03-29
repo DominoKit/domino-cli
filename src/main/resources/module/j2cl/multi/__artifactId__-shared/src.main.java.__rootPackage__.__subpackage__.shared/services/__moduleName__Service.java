@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${rootPackage}.${subpackage}.shared.services;
 
-import org.dominokit.domino.rest.shared.request.service.annotations.RequestFactory;
+import org.dominokit.rest.shared.request.service.annotations.RequestFactory;
 import ${rootPackage}.${subpackage}.shared.model.${moduleName}Response;
 import ${rootPackage}.${subpackage}.shared.model.${moduleName}Request;
 

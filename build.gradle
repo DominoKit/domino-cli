@@ -18,7 +18,7 @@ apply plugin: 'maven'
 apply plugin: "com.install4j.gradle"
 
 group = 'org.dominokit'
-version = '0.5.0'
+version = '1.0.0-RC1'
 
 description = "Domino CLI"
 
@@ -36,8 +36,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.velocity/velocity-tools
     compile group: 'org.apache.velocity', name: 'velocity-tools', version: '2.0'
 
-    implementation group: 'org.dominokit.jackson', name: 'jackson-apt', version: '1.0-SNAPSHOT'
-    annotationProcessor group: 'org.dominokit.jackson', name: 'jackson-apt-processor', version: '1.0-SNAPSHOT'
+    implementation group: 'org.dominokit', name: 'domino-jackson', version: '1.0.0-RC2'
+    annotationProcessor group: 'org.dominokit', name: 'domino-jackson-processor', version: '1.0.0-RC2'
 
     // https://mvnrepository.com/artifact/org.apache.maven/maven-model-builder
     compile group: 'org.apache.maven', name: 'maven-model-builder', version: '3.6.1'

@@ -138,6 +138,11 @@
                       "type": "RESOURCE"
                     },
                     {
+                      "name": "favicon.png",
+                      "template": "app/gwt/basic/__name__-server/src/main/webapp/favicon.png",
+                      "type": "RESOURCE"
+                    },
+                    {
                       "name": "index.html",
                       "template": "app/gwt/basic/__name__-server/src/main/webapp/index.html",
                       "type": "VELOCITY"

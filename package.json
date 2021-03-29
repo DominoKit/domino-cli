@@ -7,7 +7,7 @@
   "main": "index.js",
   "preferGlobal": true,
   "repository": "",
-  "version": "0.5.0",
+  "version": "1.0.0-RC1",
   "jdeploy": {
     "jar": "build/libs/domino-cli-fat.jar"
   },

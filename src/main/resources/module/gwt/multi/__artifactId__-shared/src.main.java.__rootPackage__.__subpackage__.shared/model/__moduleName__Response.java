@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${rootPackage}.${subpackage}.shared.model;
 
-import org.dominokit.jacksonapt.annotation.JSONMapper;
+import org.dominokit.jackson.annotation.JSONMapper;
 
 @JSONMapper
 public class ${moduleName}Response{
