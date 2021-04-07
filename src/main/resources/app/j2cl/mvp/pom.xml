@@ -14,11 +14,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <vertx.version>3.8.1</vertx.version>
-        <domino.history.version>1.0.0-RC2</domino.history.version>
-        <domino.rest.version>1.0.0-RC1</domino.rest.version>
-        <domino.jackson.version>1.0.0-RC2</domino.jackson.version>
-        <domino.ui.version>1.0.0-RC1</domino.ui.version>
-        <domino.mvp.version>1.0.0-RC1</domino.mvp.version>
+        <domino.history.version>1.0.0-RC3</domino.history.version>
+        <domino.rest.version>1.0.0-RC3</domino.rest.version>
+        <domino.jackson.version>1.0.0-RC3</domino.jackson.version>
+        <domino.ui.version>1.0.0-RC2</domino.ui.version>
+        <domino.mvp.version>1.0.0-RC3</domino.mvp.version>
     </properties>
 
     <repositories>
