@@ -5,6 +5,7 @@ import org.apache.maven.model.Model;
 import org.dominokit.cli.PomUtil;
 import org.dominokit.cli.model.Project;
 import org.dominokit.cli.structure.files.VelocityContentProcessor;
+import org.dominokit.cli.structure.files.VelocityStringContentProcessor;
 import org.dominokit.cli.structure.folders.Folder;
 import org.dominokit.cli.structure.folders.Folder_MapperImpl;
 
@@ -100,7 +101,7 @@ public class GenerateAppCommand implements Runnable {
 
         try {
 
-            String projectTemplateConfig = new VelocityContentProcessor(getTemplateByType(j2cl, type), project)
+            String projectTemplateConfig = new VelocityStringContentProcessor(getTemplateByType(j2cl, type), project)
                     .processedContent();
             Folder folder = Folder_MapperImpl.INSTANCE
                     .read(projectTemplateConfig);

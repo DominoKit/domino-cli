@@ -3,15 +3,21 @@ package org.dominokit.cli.structure.files;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
-import org.dominokit.jacksonapt.JsonSerializationContext;
-import org.dominokit.jacksonapt.JsonSerializer;
-import org.dominokit.jacksonapt.ser.EnumJsonSerializer;
-import org.dominokit.jacksonapt.ser.StringJsonSerializer;
-import org.dominokit.jacksonapt.ser.bean.AbstractBeanJsonSerializer;
-import org.dominokit.jacksonapt.ser.bean.BeanPropertySerializer;
+import org.dominokit.jackson.JsonSerializationContext;
+import org.dominokit.jackson.JsonSerializer;
+import org.dominokit.jackson.ser.EnumJsonSerializer;
+import org.dominokit.jackson.ser.StringJsonSerializer;
+import org.dominokit.jackson.ser.bean.AbstractBeanJsonSerializer;
+import org.dominokit.jackson.ser.bean.BeanPropertySerializer;
 
 public final class TemplateFileBeanJsonSerializerImpl extends AbstractBeanJsonSerializer<TemplateFile> {
+  private static final TemplateFileBeanJsonSerializerImpl INSTANCE = new TemplateFileBeanJsonSerializerImpl();
+
   public TemplateFileBeanJsonSerializerImpl() {
+  }
+
+  public static TemplateFileBeanJsonSerializerImpl getInstance() {
+    return INSTANCE;
   }
 
   @Override

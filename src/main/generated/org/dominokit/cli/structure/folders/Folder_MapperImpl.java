@@ -1,9 +1,9 @@
 package org.dominokit.cli.structure.folders;
 
 import java.lang.Override;
-import org.dominokit.jacksonapt.AbstractObjectMapper;
-import org.dominokit.jacksonapt.JsonDeserializer;
-import org.dominokit.jacksonapt.JsonSerializer;
+import org.dominokit.jackson.AbstractObjectMapper;
+import org.dominokit.jackson.JsonDeserializer;
+import org.dominokit.jackson.JsonSerializer;
 
 public final class Folder_MapperImpl extends AbstractObjectMapper<Folder> {
   public static final Folder_MapperImpl INSTANCE = new Folder_MapperImpl();
@@ -14,11 +14,11 @@ public final class Folder_MapperImpl extends AbstractObjectMapper<Folder> {
 
   @Override
   protected JsonDeserializer<Folder> newDeserializer() {
-    return new FolderBeanJsonDeserializerImpl();
+    return FolderBeanJsonDeserializerImpl.getInstance();
   }
 
   @Override
   protected JsonSerializer<?> newSerializer() {
-    return new FolderBeanJsonSerializerImpl();
+    return FolderBeanJsonSerializerImpl.getInstance();
   }
 }

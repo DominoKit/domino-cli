@@ -10,7 +10,7 @@ import org.dominokit.cli.model.IsContext;
 
 import java.io.StringWriter;
 
-public class VelocityContentProcessor implements FileContentProcessor {
+public class VelocityContentProcessor implements FileContentProcessor<byte[]> {
 
     private String templateName;
     private IsContext contextAware;
@@ -21,7 +21,7 @@ public class VelocityContentProcessor implements FileContentProcessor {
     }
 
     @Override
-    public String processedContent() {
+    public byte[] processedContent() {
         VelocityEngine velocityEngine = new VelocityEngine();
         velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
         velocityEngine.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
@@ -33,6 +33,6 @@ public class VelocityContentProcessor implements FileContentProcessor {
         StringWriter writer = new StringWriter();
         template.merge(contextAware.asContext(), writer);
 
-        return writer.toString();
+        return writer.toString().getBytes();
     }
 }

@@ -4,15 +4,21 @@ import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
-import org.dominokit.jacksonapt.JsonSerializationContext;
-import org.dominokit.jacksonapt.JsonSerializer;
-import org.dominokit.jacksonapt.ser.BooleanJsonSerializer;
-import org.dominokit.jacksonapt.ser.StringJsonSerializer;
-import org.dominokit.jacksonapt.ser.bean.AbstractBeanJsonSerializer;
-import org.dominokit.jacksonapt.ser.bean.BeanPropertySerializer;
+import org.dominokit.jackson.JsonSerializationContext;
+import org.dominokit.jackson.JsonSerializer;
+import org.dominokit.jackson.ser.BooleanJsonSerializer;
+import org.dominokit.jackson.ser.StringJsonSerializer;
+import org.dominokit.jackson.ser.bean.AbstractBeanJsonSerializer;
+import org.dominokit.jackson.ser.bean.BeanPropertySerializer;
 
 public final class ProjectBeanJsonSerializerImpl extends AbstractBeanJsonSerializer<Project> {
+  private static final ProjectBeanJsonSerializerImpl INSTANCE = new ProjectBeanJsonSerializerImpl();
+
   public ProjectBeanJsonSerializerImpl() {
+  }
+
+  public static ProjectBeanJsonSerializerImpl getInstance() {
+    return INSTANCE;
   }
 
   @Override

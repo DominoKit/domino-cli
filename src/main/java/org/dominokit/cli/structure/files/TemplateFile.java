@@ -1,5 +1,6 @@
 package org.dominokit.cli.structure.files;
 
+import org.dominokit.cli.commands.CLIConfig;
 import org.dominokit.cli.model.IsContext;
 import org.dominokit.jackson.annotation.JSONMapper;
 
@@ -7,9 +8,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 @JSONMapper
 public class TemplateFile implements ProjectFile{
+
+    private static final Logger LOGGER = Logger.getLogger(TemplateFile.class.getName());
 
     private String name;
     private String template;
@@ -43,14 +47,22 @@ public class TemplateFile implements ProjectFile{
     public void write(Path path, IsContext context) throws IOException{
 
         Path targetPath = Paths.get(path.toAbsolutePath().toString(), name);
+
         if(TemplateType.RESOURCE.equals(type)){
             write(targetPath, new ResourceFileContentProcessor(template).processedContent());
         }else{
             write(targetPath, new VelocityContentProcessor(template, context).processedContent());
         }
+
+        if(CLIConfig.EXECUTABLE_NAMES.contains(name)){
+            boolean result = Paths.get(path.toAbsolutePath().toString(), name).toFile().setExecutable(true);
+            LOGGER.info("Setting file ["+name+"] as executable result ["+result+"]");
+        }
+
     }
 
-    private void write(Path targetPath, String content) throws IOException{
-        Files.write(targetPath, content.getBytes());
+    private void write(Path targetPath, byte[] content) throws IOException{
+        Files.write(targetPath, content);
+
     }
 }

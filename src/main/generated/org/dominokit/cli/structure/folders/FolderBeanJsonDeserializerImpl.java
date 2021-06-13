@@ -8,22 +8,28 @@ import java.util.List;
 import java.util.Map;
 import org.dominokit.cli.structure.files.TemplateFile;
 import org.dominokit.cli.structure.files.TemplateFileBeanJsonDeserializerImpl;
-import org.dominokit.jacksonapt.JacksonContextProvider;
-import org.dominokit.jacksonapt.JsonDeserializationContext;
-import org.dominokit.jacksonapt.JsonDeserializer;
-import org.dominokit.jacksonapt.JsonDeserializerParameters;
-import org.dominokit.jacksonapt.deser.StringJsonDeserializer;
-import org.dominokit.jacksonapt.deser.bean.AbstractBeanJsonDeserializer;
-import org.dominokit.jacksonapt.deser.bean.BeanPropertyDeserializer;
-import org.dominokit.jacksonapt.deser.bean.HasDeserializerAndParameters;
-import org.dominokit.jacksonapt.deser.bean.Instance;
-import org.dominokit.jacksonapt.deser.bean.InstanceBuilder;
-import org.dominokit.jacksonapt.deser.bean.MapLike;
-import org.dominokit.jacksonapt.deser.collection.ListJsonDeserializer;
-import org.dominokit.jacksonapt.stream.JsonReader;
+import org.dominokit.jackson.JacksonContextProvider;
+import org.dominokit.jackson.JsonDeserializationContext;
+import org.dominokit.jackson.JsonDeserializer;
+import org.dominokit.jackson.JsonDeserializerParameters;
+import org.dominokit.jackson.deser.StringJsonDeserializer;
+import org.dominokit.jackson.deser.bean.AbstractBeanJsonDeserializer;
+import org.dominokit.jackson.deser.bean.BeanPropertyDeserializer;
+import org.dominokit.jackson.deser.bean.HasDeserializerAndParameters;
+import org.dominokit.jackson.deser.bean.Instance;
+import org.dominokit.jackson.deser.bean.InstanceBuilder;
+import org.dominokit.jackson.deser.bean.MapLike;
+import org.dominokit.jackson.deser.collection.ListJsonDeserializer;
+import org.dominokit.jackson.stream.JsonReader;
 
 public final class FolderBeanJsonDeserializerImpl extends AbstractBeanJsonDeserializer<Folder> {
+  private static final FolderBeanJsonDeserializerImpl INSTANCE = new FolderBeanJsonDeserializerImpl();
+
   public FolderBeanJsonDeserializerImpl() {
+  }
+
+  public static FolderBeanJsonDeserializerImpl getInstance() {
+    return INSTANCE;
   }
 
   @Override

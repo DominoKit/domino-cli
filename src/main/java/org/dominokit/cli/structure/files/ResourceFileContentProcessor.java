@@ -2,14 +2,9 @@ package org.dominokit.cli.structure.files;
 
 import org.apache.commons.io.IOUtils;
 
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ResourceFileContentProcessor implements FileContentProcessor {
+public class ResourceFileContentProcessor implements FileContentProcessor<byte[]> {
 
     private static final Logger LOGGER = Logger.getLogger(ResourceFileContentProcessor.class.getCanonicalName());
 
@@ -20,16 +15,12 @@ public class ResourceFileContentProcessor implements FileContentProcessor {
     }
 
     @Override
-    public String processedContent() {
-
+    public byte[] processedContent() {
         try {
-            InputStream resourceAsStream = getClass().getClassLoader()
-                    .getResourceAsStream(resourceName);
-            Stream<String> lines = IOUtils.readLines(resourceAsStream, StandardCharsets.UTF_8).stream();
-            String data = lines.collect(Collectors.joining("\n"));
-            lines.close();
 
-            return data;
+            byte[] bytes = IOUtils.resourceToByteArray(resourceName, getClass().getClassLoader());
+
+            return bytes;
         } catch (Exception e) {
             throw new ProcessContentException(resourceName, e);
         }

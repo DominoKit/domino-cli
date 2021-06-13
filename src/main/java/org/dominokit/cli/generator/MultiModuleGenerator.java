@@ -5,6 +5,7 @@ import org.dominokit.cli.commands.PathUtils;
 import org.dominokit.cli.PomUtil;
 import org.dominokit.cli.model.Module;
 import org.dominokit.cli.structure.files.VelocityContentProcessor;
+import org.dominokit.cli.structure.files.VelocityStringContentProcessor;
 import org.dominokit.cli.structure.folders.Folder;
 import org.dominokit.cli.structure.folders.Folder_MapperImpl;
 
@@ -17,7 +18,7 @@ public class MultiModuleGenerator {
     public void generate(Module module) throws IOException {
 
         String compiler = module.isJ2cl()?"j2cl":"gwt";
-        String projectTemplateConfig = new VelocityContentProcessor("template/module/"+compiler+"/multi.json", module)
+        String projectTemplateConfig = new VelocityStringContentProcessor("template/module/"+compiler+"/multi.json", module)
                 .processedContent();
         Folder folder = Folder_MapperImpl.INSTANCE
                 .read(projectTemplateConfig);

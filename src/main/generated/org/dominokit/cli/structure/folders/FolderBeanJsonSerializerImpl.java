@@ -6,15 +6,21 @@ import java.lang.String;
 import java.util.List;
 import org.dominokit.cli.structure.files.TemplateFile;
 import org.dominokit.cli.structure.files.TemplateFileBeanJsonSerializerImpl;
-import org.dominokit.jacksonapt.JsonSerializationContext;
-import org.dominokit.jacksonapt.JsonSerializer;
-import org.dominokit.jacksonapt.ser.CollectionJsonSerializer;
-import org.dominokit.jacksonapt.ser.StringJsonSerializer;
-import org.dominokit.jacksonapt.ser.bean.AbstractBeanJsonSerializer;
-import org.dominokit.jacksonapt.ser.bean.BeanPropertySerializer;
+import org.dominokit.jackson.JsonSerializationContext;
+import org.dominokit.jackson.JsonSerializer;
+import org.dominokit.jackson.ser.CollectionJsonSerializer;
+import org.dominokit.jackson.ser.StringJsonSerializer;
+import org.dominokit.jackson.ser.bean.AbstractBeanJsonSerializer;
+import org.dominokit.jackson.ser.bean.BeanPropertySerializer;
 
 public final class FolderBeanJsonSerializerImpl extends AbstractBeanJsonSerializer<Folder> {
+  private static final FolderBeanJsonSerializerImpl INSTANCE = new FolderBeanJsonSerializerImpl();
+
   public FolderBeanJsonSerializerImpl() {
+  }
+
+  public static FolderBeanJsonSerializerImpl getInstance() {
+    return INSTANCE;
   }
 
   @Override

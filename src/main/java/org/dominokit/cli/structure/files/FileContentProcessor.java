@@ -1,7 +1,7 @@
 package org.dominokit.cli.structure.files;
 
-public interface FileContentProcessor {
-    String processedContent();
+public interface FileContentProcessor<T> {
+    T processedContent();
 
     class ProcessContentException extends RuntimeException{
 

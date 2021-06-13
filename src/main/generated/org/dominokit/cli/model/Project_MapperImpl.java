@@ -1,9 +1,9 @@
 package org.dominokit.cli.model;
 
 import java.lang.Override;
-import org.dominokit.jacksonapt.AbstractObjectMapper;
-import org.dominokit.jacksonapt.JsonDeserializer;
-import org.dominokit.jacksonapt.JsonSerializer;
+import org.dominokit.jackson.AbstractObjectMapper;
+import org.dominokit.jackson.JsonDeserializer;
+import org.dominokit.jackson.JsonSerializer;
 
 public final class Project_MapperImpl extends AbstractObjectMapper<Project> {
   public static final Project_MapperImpl INSTANCE = new Project_MapperImpl();
@@ -14,11 +14,11 @@ public final class Project_MapperImpl extends AbstractObjectMapper<Project> {
 
   @Override
   protected JsonDeserializer<Project> newDeserializer() {
-    return new ProjectBeanJsonDeserializerImpl();
+    return ProjectBeanJsonDeserializerImpl.getInstance();
   }
 
   @Override
   protected JsonSerializer<?> newSerializer() {
-    return new ProjectBeanJsonSerializerImpl();
+    return ProjectBeanJsonSerializerImpl.getInstance();
   }
 }

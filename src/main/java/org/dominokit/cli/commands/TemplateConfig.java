@@ -11,10 +11,12 @@ public class TemplateConfig {
     private Path templateRoot;
     private Path resourcesRoot = Paths.get("src/main/resources");
     private final List<String> resourcesExtensions;
+    private final List<String> resourcesNames;
     private Map<String, String> conditions = new HashMap<>();
 
     public TemplateConfig(String name, Path templateRoot) throws IOException {
         resourcesExtensions = CLIConfig.RESOURCE_EXTENSIONS;
+        resourcesNames = CLIConfig.RESOURCE_NAMES;
         this.templateRoot = templateRoot;
         this.name = name;
     }
@@ -37,6 +39,10 @@ public class TemplateConfig {
 
     public List<String> getResourcesExtensions() {
         return resourcesExtensions;
+    }
+
+    public List<String> getResourcesNames() {
+        return resourcesNames;
     }
 
     public Map<String, String> getConditions() {

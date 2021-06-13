@@ -6,22 +6,28 @@ import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
 import java.util.Map;
-import org.dominokit.jacksonapt.JacksonContextProvider;
-import org.dominokit.jacksonapt.JsonDeserializationContext;
-import org.dominokit.jacksonapt.JsonDeserializer;
-import org.dominokit.jacksonapt.JsonDeserializerParameters;
-import org.dominokit.jacksonapt.deser.BooleanJsonDeserializer;
-import org.dominokit.jacksonapt.deser.StringJsonDeserializer;
-import org.dominokit.jacksonapt.deser.bean.AbstractBeanJsonDeserializer;
-import org.dominokit.jacksonapt.deser.bean.BeanPropertyDeserializer;
-import org.dominokit.jacksonapt.deser.bean.HasDeserializerAndParameters;
-import org.dominokit.jacksonapt.deser.bean.Instance;
-import org.dominokit.jacksonapt.deser.bean.InstanceBuilder;
-import org.dominokit.jacksonapt.deser.bean.MapLike;
-import org.dominokit.jacksonapt.stream.JsonReader;
+import org.dominokit.jackson.JacksonContextProvider;
+import org.dominokit.jackson.JsonDeserializationContext;
+import org.dominokit.jackson.JsonDeserializer;
+import org.dominokit.jackson.JsonDeserializerParameters;
+import org.dominokit.jackson.deser.BooleanJsonDeserializer;
+import org.dominokit.jackson.deser.StringJsonDeserializer;
+import org.dominokit.jackson.deser.bean.AbstractBeanJsonDeserializer;
+import org.dominokit.jackson.deser.bean.BeanPropertyDeserializer;
+import org.dominokit.jackson.deser.bean.HasDeserializerAndParameters;
+import org.dominokit.jackson.deser.bean.Instance;
+import org.dominokit.jackson.deser.bean.InstanceBuilder;
+import org.dominokit.jackson.deser.bean.MapLike;
+import org.dominokit.jackson.stream.JsonReader;
 
 public final class ProjectBeanJsonDeserializerImpl extends AbstractBeanJsonDeserializer<Project> {
+  private static final ProjectBeanJsonDeserializerImpl INSTANCE = new ProjectBeanJsonDeserializerImpl();
+
   public ProjectBeanJsonDeserializerImpl() {
+  }
+
+  public static ProjectBeanJsonDeserializerImpl getInstance() {
+    return INSTANCE;
   }
 
   @Override

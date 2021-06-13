@@ -115,6 +115,114 @@
       ]
     },
     {
+      "name": "${name}-api",
+      "condition": "true",
+      "folders": [
+        {
+          "name": "src",
+          "condition": "true",
+          "folders": [
+            {
+              "name": "main",
+              "condition": "true",
+              "folders": [
+                {
+                  "name": "resources",
+                  "condition": "true",
+                  "folders": [
+                    {
+                      "name": "META-INF",
+                      "condition": "true",
+                      "folders": [
+                        {
+                          "name": "resources",
+                          "condition": "true",
+                          "folders": [],
+                          "files": [
+                            {
+                              "name": "index.html",
+                              "template": "app/gwt/mvp/__name__-api/src/main/resources/META-INF/resources/index.html",
+                              "type": "VELOCITY"
+                            }
+                          ]
+                        }
+                      ],
+                      "files": []
+                    }
+                  ],
+                  "files": [
+                    {
+                      "name": "application.properties",
+                      "template": "app/gwt/mvp/__name__-api/src/main/resources/application.properties",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                },
+                {
+                  "name": "java.${rootPackage}",
+                  "condition": "true",
+                  "folders": [],
+                  "files": [
+                    {
+                      "name": "GreetingResource.java",
+                      "template": "app/gwt/mvp/__name__-api/src/main/java.__rootPackage__/GreetingResource.java",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                },
+                {
+                  "name": "docker",
+                  "condition": "true",
+                  "folders": [],
+                  "files": [
+                    {
+                      "name": "Dockerfile.jvm",
+                      "template": "app/gwt/mvp/__name__-api/src/main/docker/Dockerfile.jvm",
+                      "type": "VELOCITY"
+                    },
+                    {
+                      "name": "Dockerfile.native-distroless",
+                      "template": "app/gwt/mvp/__name__-api/src/main/docker/Dockerfile.native-distroless",
+                      "type": "VELOCITY"
+                    },
+                    {
+                      "name": "Dockerfile.native",
+                      "template": "app/gwt/mvp/__name__-api/src/main/docker/Dockerfile.native",
+                      "type": "VELOCITY"
+                    },
+                    {
+                      "name": "Dockerfile.legacy-jar",
+                      "template": "app/gwt/mvp/__name__-api/src/main/docker/Dockerfile.legacy-jar",
+                      "type": "VELOCITY"
+                    }
+                  ]
+                }
+              ],
+              "files": []
+            }
+          ],
+          "files": []
+        }
+      ],
+      "files": [
+        {
+          "name": ".dockerignore",
+          "template": "app/gwt/mvp/__name__-api/.dockerignore",
+          "type": "VELOCITY"
+        },
+        {
+          "name": "pom.xml",
+          "template": "app/gwt/mvp/__name__-api/pom.xml",
+          "type": "VELOCITY"
+        },
+        {
+          "name": "README.md",
+          "template": "app/gwt/mvp/__name__-api/README.md",
+          "type": "VELOCITY"
+        }
+      ]
+    },
+    {
       "name": ".idea",
       "condition": "true",
       "folders": [
@@ -126,6 +234,11 @@
             {
               "name": "process_sources.xml",
               "template": "app/gwt/mvp/.idea/runConfigurations/process_sources.xml",
+              "type": "VELOCITY"
+            },
+            {
+              "name": "${name}api.xml",
+              "template": "app/gwt/mvp/.idea/runConfigurations/__name__api.xml",
               "type": "VELOCITY"
             },
             {

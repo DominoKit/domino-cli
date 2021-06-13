@@ -22,7 +22,7 @@ public class App implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        Layout layout = Layout.create("Domino-ui starter")
+        var layout = Layout.create("Domino-ui starter")
                 .show(ColorScheme.BLUE);
 
         layout.getLeftPanel()
