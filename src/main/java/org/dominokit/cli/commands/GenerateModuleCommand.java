@@ -1,19 +1,12 @@
 package org.dominokit.cli.commands;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.maven.model.Model;
-import org.dominokit.cli.PomUtil;
-import org.dominokit.cli.generator.MultiModuleGenerator;
-import org.dominokit.cli.generator.SingleModuleGenerator;
-import org.dominokit.cli.model.Module;
-import org.dominokit.cli.model.Project;
-
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import org.dominokit.cli.creator.module.Module;
+import org.dominokit.cli.creator.module.ModuleCreatorFactory;
 
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
-import static picocli.CommandLine.*;
+import static picocli.CommandLine.Command;
+import static picocli.CommandLine.HelpCommand;
+import static picocli.CommandLine.Option;
 
 @Command(
         name = "module",
@@ -34,7 +27,7 @@ public class GenerateModuleCommand implements Runnable {
             names = {"-s", "--single"},
             fallbackValue = "true",
             defaultValue = "false",
-            description = "if true will split the module into more submodules, [name]-backend, [name]-frontend, [name]-frontend-ui, [name]-shared"
+            description = "If true it will merge client an shared as one module, a backend module will not be generated"
     )
     private boolean single = false;
 
@@ -46,13 +39,14 @@ public class GenerateModuleCommand implements Runnable {
     )
     private boolean generateTests = false;
 
+
     @Option(
-            names = {"-j", "--j2cl"},
-            fallbackValue = "true",
-            defaultValue = "false",
-            description = "if true will generate a module that target j2cl compiler."
+            names = {"-c", "--compiler"},
+            fallbackValue = "gwt",
+            defaultValue = "gwt",
+            description = "The Java to JavaScript compiler to be used possible values [gwt, j2cl] default is [gwt]"
     )
-    private boolean j2cl = false;
+    private String compiler;
 
     @Option(
             names = {"-sp", "--subpackage"},
@@ -61,47 +55,40 @@ public class GenerateModuleCommand implements Runnable {
     private String subPackage;
 
     @Option(
+            names = {"-p", "--prefix"},
+            description = "The module prefix to be used in the generated classes name, if not present module name will be used instead"
+    )
+    private String prefix;
+
+    @Option(
             names = {"-d", "--dir"},
             description = "absolute path to the module where the project should be generated."
     )
     private String workingDire;
 
+    @Option(
+            names = {"-b", "--backend"},
+            fallbackValue = "false",
+            defaultValue = "false",
+            description = "if true will generate a domino-mvp backend module, default implementation is vertx."
+    )
+    private boolean backend = false;
+
+
     @Override
     public void run() {
-
 
         PathUtils.setWorkingDir(workingDire);
 
         try {
 
-            Model projectPom = PomUtil.asModel("");
+            Module module = new Module(name);
 
-            String artifactId = projectPom.getArtifactId();
-
-            Model frontendPom = PomUtil.asModel(artifactId + "-frontend");
-            Model backendPom = PomUtil.asModel(artifactId + "-backend");
-
-            Project project = new Project();
-
-            project.setName(artifactId);
-            if (nonNull(projectPom.getParent())) {
-                project.setGroupId(projectPom.getParent().getGroupId());
-                project.setRootPackage(projectPom.getParent().getGroupId());
-                project.setVersion(projectPom.getParent().getVersion());
-            } else {
-                project.setGroupId(projectPom.getGroupId());
-                project.setRootPackage(projectPom.getGroupId());
-                project.setVersion(projectPom.getVersion());
-            }
-            project.setArtifactId(projectPom.getArtifactId());
-
-            Module module = new Module(project);
-            module.setProjectPom(projectPom);
-            module.setBackendPom(backendPom);
-            module.setFrontendPom(frontendPom);
             module.setArtifactId(name);
             module.setGenerateTests(generateTests);
-            module.setJ2cl(j2cl);
+            module.setCompiler(compiler);
+            module.setPrefix(prefix);
+            module.setGenerateBackend(backend);
 
             if (isNull(subPackage) || subPackage.trim().isEmpty()) {
                 subPackage = name.toLowerCase()
@@ -110,40 +97,11 @@ public class GenerateModuleCommand implements Runnable {
             }
             module.setSubPackage(subPackage);
 
-            if (single) {
-                new SingleModuleGenerator().generate(module);
-            } else {
-                new MultiModuleGenerator().generate(module);
-            }
-
-            addModule(module);
-            System.out.println(this);
+            ModuleCreatorFactory.get(compiler, single).create(module.init());
+            System.out.println("The following module have been created");
+            System.out.println(module);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public String toString() {
-        return "Module generated with the following arguments" +
-                "\nname=" + name +
-                "\nsingle=" + single +
-                "\ngenerateTests=" + generateTests +
-                "\nj2cl=" + j2cl +
-                "\nsubPackage=" + subPackage +
-                "\nworkingDire=" + workingDire;
-    }
-
-    private void addModule(Module module) throws IOException {
-        String projectPomString = PomUtil.asString(module.getProjectPom());
-
-        if (projectPomString.contains("<modules>")) {
-            projectPomString = projectPomString.replace("</modules>", "\t<module>" + module.getArtifactId() + "</module>\n\t</modules>");
-        } else {
-            projectPomString = projectPomString.replace("</project>", "\n\t<modules>\n\t\t<module>" + module.getArtifactId() + "</module>\n\t</modules>\n</project>");
-        }
-        FileUtils.write(module.getProjectPom().getPomFile(), projectPomString, StandardCharsets.UTF_8);
-
-    }
-
 }

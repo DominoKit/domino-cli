@@ -15,7 +15,7 @@ public class PathUtils {
         }
     }
 
-    static void setWorkingDir(String workingDir) {
+    public static void setWorkingDir(String workingDir) {
         PathUtils.workingDir = workingDir;
     }
 }

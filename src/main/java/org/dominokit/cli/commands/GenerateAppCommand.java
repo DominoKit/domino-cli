@@ -3,21 +3,19 @@ package org.dominokit.cli.commands;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Model;
 import org.dominokit.cli.PomUtil;
-import org.dominokit.cli.model.Project;
-import org.dominokit.cli.structure.files.VelocityContentProcessor;
-import org.dominokit.cli.structure.files.VelocityStringContentProcessor;
-import org.dominokit.cli.structure.folders.Folder;
-import org.dominokit.cli.structure.folders.Folder_MapperImpl;
+import org.dominokit.cli.creator.Project;
+import org.dominokit.cli.creator.project.ProjectCreator;
+import org.dominokit.cli.creator.project.ProjectCreatorFactory;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static picocli.CommandLine.*;
+import static picocli.CommandLine.Command;
+import static picocli.CommandLine.HelpCommand;
+import static picocli.CommandLine.Option;
 
 @Command(
         name = "app",
@@ -50,17 +48,28 @@ public class GenerateAppCommand implements Runnable {
 
     @Option(
             names = {"-t", "--type"},
-            description = "The type of the project, available types are [mvp,basic], [mvp] will generate a domino-mvp application, [basic] will generate simple gwt with domino-ui application.",
+            description = "The type of the project :" +
+                    "\n\t\t -[basic] : will generate a simple project with (client, shared, server)" +
+                    "\n\t\t -[mvp] : will generate a domino-mvp project",
             defaultValue = "mvp"
     )
     private String type;
 
     @Option(
-            names = {"-j", "--j2cl"},
-            defaultValue = "false",
-            description = "if true will generate a module that target j2cl compiler."
+            names = {"-api", "--generate-api"},
+            fallbackValue = "true",
+            defaultValue = "true",
+            description = "If true will generate an api module for REST endpoints implementation, current implementation is Quarkus with jax-rs."
     )
-    private boolean j2cl = false;
+    private boolean generateApi;
+
+    @Option(
+            names = {"-c", "--compiler"},
+            fallbackValue = "gwt",
+            defaultValue = "gwt",
+            description = "The Java to JavaScript compiler to be used possible values [gwt, j2cl] default is [gwt]"
+    )
+    private String compiler;
 
     @Override
     public void run() {
@@ -73,11 +82,9 @@ public class GenerateAppCommand implements Runnable {
             LOGGER.info("No parent pom was found, creating a root project.");
         }
 
-        Project project = new Project();
+        Project project = new Project(name);
 
-        project.setName(name);
         project.setArtifactId(name);
-
 
         if (nonNull(parentPom)) {
             project.setVersion(parentPom.getVersion());
@@ -99,37 +106,26 @@ public class GenerateAppCommand implements Runnable {
                 .replace(" ", "")
         );
 
+        project.setGenerateApi(generateApi);
+
         try {
 
-            String projectTemplateConfig = new VelocityStringContentProcessor(getTemplateByType(j2cl, type), project)
-                    .processedContent();
-            Folder folder = Folder_MapperImpl.INSTANCE
-                    .read(projectTemplateConfig);
-            folder.write(Paths.get(PathUtils.getUserDir()), project);
+            ProjectCreator projectCreator = ProjectCreatorFactory.get(compiler, type);
+            projectCreator.create(project);
 
             if(project.isHasParent()){
                 addProjectToParent(project, parentPom);
             }
+
+            System.out.println("The following project have been created");
+            System.out.println(project);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private String getTemplateByType(boolean j2cl, String type) {
-        String compiler = j2cl ? "j2cl" : "gwt";
-
-        if (type.equalsIgnoreCase("mvp")) {
-            return "template/project/" + compiler + "/domino-mvp.json";
-        } else if (type.equalsIgnoreCase("basic")) {
-            return "template/project/" + compiler + "/domino-basic.json";
-        }
-        LOGGER.log(Level.SEVERE, "Unrecognized application type : " + type);
-        throw new IllegalArgumentException("Unrecognized application type : " + type);
-    }
-
     private void addProjectToParent(Project project, Model parentPomModel) throws IOException {
-
         String parentPom;
         try {
             parentPom = PomUtil.asString(parentPomModel);
