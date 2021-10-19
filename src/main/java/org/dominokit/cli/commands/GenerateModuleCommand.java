@@ -1,7 +1,7 @@
 package org.dominokit.cli.commands;
 
-import org.dominokit.cli.creator.module.Module;
-import org.dominokit.cli.creator.module.ModuleCreatorFactory;
+import org.dominokit.cli.generator.module.Module;
+import org.dominokit.cli.generator.module.ModuleCreatorFactory;
 
 import static java.util.Objects.isNull;
 import static picocli.CommandLine.Command;

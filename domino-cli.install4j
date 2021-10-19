@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="8.0.1" transformSequenceNumber="8">
   <directoryPresets config="build/libs/domino-cli-fat.jar" />
-  <application name="dominokit-cli" applicationId="0518-2014-5243-3779" mediaDir="build/install4j" shortName="dominokit-cli" publisher="Dominokit" publisherWeb="www.dominokit.org" version="1.0.0-RC4" macVolumeId="6cb917d1c585346b" javaMinVersion="1.8.0" jdkMode="jdk" jdkName="JDK 1.8" />
+  <application name="dominokit-cli" applicationId="0518-2014-5243-3779" mediaDir="build/install4j" shortName="dominokit-cli" publisher="Dominokit" publisherWeb="www.dominokit.org" version="${compiler:majorVersion}" macVolumeId="6cb917d1c585346b" javaMinVersion="1.8.0" jdkMode="jdk" jdkName="JDK 1.8" />
   <files>
     <mountPoints>
       <mountPoint id="60" />

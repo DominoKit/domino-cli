@@ -3,9 +3,9 @@ package org.dominokit.cli.commands;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Model;
 import org.dominokit.cli.PomUtil;
-import org.dominokit.cli.creator.Project;
-import org.dominokit.cli.creator.project.ProjectCreator;
-import org.dominokit.cli.creator.project.ProjectCreatorFactory;
+import org.dominokit.cli.generator.project.Project;
+import org.dominokit.cli.generator.project.ProjectCreator;
+import org.dominokit.cli.generator.project.ProjectCreatorFactory;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

@@ -8,11 +8,10 @@ import ${rootPackage}.${subpackage}.shared.events.${prefix}Event;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@PresenterProxy
+@PresenterProxy(name = "${prefix}")
 @AutoRoute(token = "${token}")
 @Slot(PredefinedSlots.BODY_SLOT)
 @AutoReveal
-@OnStateChanged(${prefix}Event.class)
 public class ${prefix}Proxy extends ViewBaseClientPresenter<${prefix}View> implements ${prefix}View.${prefix}UiHandlers {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(${prefix}Proxy.class);

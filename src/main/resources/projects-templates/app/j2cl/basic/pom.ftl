@@ -33,6 +33,7 @@
             <plugin>
                 <groupId>com.vertispan.j2cl</groupId>
                 <artifactId>j2cl-maven-plugin</artifactId>
+                <version>${r"${j2cl.maven.plugin.version}"}</version>
                 <inherited>false</inherited>
                 <configuration>
                     <webappDirectory>${r"${project.build.directory}"}/gwt/launcherDir</webappDirectory>

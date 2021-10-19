@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-plugins{
+plugins {
     id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
 
@@ -18,7 +18,7 @@ apply plugin: 'maven'
 apply plugin: "com.install4j.gradle"
 
 group = 'org.dominokit'
-version = '1.0.0-RC4'
+version = '1.0.0-RC5'
 
 description = "Domino CLI"
 
@@ -61,7 +61,7 @@ compileJava {
 shadowJar {
     archiveBaseName = 'domino-cli'
     archiveClassifier = 'fat'
-    version =null
+    version = null
 }
 
 install4j {
@@ -73,10 +73,10 @@ install4j {
 task media(type: com.install4j.gradle.Install4jTask) {
     dependsOn 'shadowJar' // example task that prepares the distribution for install4j
     projectFile = 'domino-cli.install4j'
-    variables = [majorVersion: version.substring(0, 1), build: 1234]
+    variables = [majorVersion: version]
 }
 
-jar{
+jar {
     manifest({
         attributes 'Main-Class': mainClassName
     })
