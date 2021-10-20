@@ -23,3 +23,7 @@
     - `cd ${name}-backend`
     - execute `java -jar target/${name}-backend-${version}-fat.jar`
     - the server port will be printed in the logs access the application on `http://localhost:[port]`
+
+  - ##### Running the API server
+    - In a separate terminal `cd ${name}-api` and from there follow the readme file inside `${name}-api` module
+

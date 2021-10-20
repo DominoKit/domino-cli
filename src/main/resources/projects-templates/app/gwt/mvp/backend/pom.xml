@@ -129,7 +129,7 @@
                                 <systemProperty>
                                     <key>domino.webroot.location</key>
                                     <value>
-                                        ${r"{basedir}"}/../${name}-frontend/target/${name}-frontend-${version}/${moduleShortName}
+                                        ${r"${basedir}"}/../${name}-frontend/target/${name}-frontend-${version}/${moduleShortName}
                                     </value>
                                 </systemProperty>
                             </systemProperties>
@@ -152,7 +152,7 @@
                             <systemProperties>
                                 <systemProperty>
                                     <key>domino.webroot.location</key>
-                                    <value>${r"{basedir}"}/../target/gwt/launcherDir/${moduleShortName}
+                                    <value>${r"${basedir}"}/../target/gwt/launcherDir/${moduleShortName}
                                     </value>
                                 </systemProperty>
                             </systemProperties>
