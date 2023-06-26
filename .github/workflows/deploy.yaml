@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         java-version: [ 17 ]
-        os: [ windows-latest ]
+        os: [ ubuntu-20.04, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out Git repository
@@ -41,7 +41,7 @@ jobs:
     needs: verify
     strategy:
       matrix:
-        os: [ windows-latest ]
+        os: [ ubuntu-20.04, windows-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out Git repository
@@ -53,7 +53,7 @@ jobs:
           java-version: 17
           distribution: 'temurin'
       - name: publish to snapshot
-        run: ./mvnw -Pnative,dist package -e -B
+        run: ./mvnw -P 'native,dist' package -e -B
       - run: mkdir staging && cp -r target/distributions/*.* staging
       - uses: actions/upload-artifact@v3
         with:
