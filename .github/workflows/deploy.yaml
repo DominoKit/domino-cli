@@ -56,6 +56,25 @@ jobs:
         with:
            name: Package
            path: staging
+  release-macos:
+    needs: verify
+    runs-on: macos-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+      - name: publish to snapshot
+        run: ./mvnw -Pnative,dist package -e -B
+      - run: mkdir staging && cp -r target/distributions/*.* staging
+      - uses: actions/upload-artifact@v3
+        with:
+           name: Package
+           path: staging
 
   release-windows:
     needs: verify
@@ -68,7 +87,7 @@ jobs:
         uses: graalvm/setup-graalvm@v1
         with:
           java-version: 17
-          version: '22.3.2'
+          distribution: 'graalvm'
       - name: Set up GraalVM Native Image toolchain
         uses: helpermethod/graalvm-native-image-toolchain@0.0.2
         with:
