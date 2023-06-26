@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         java-version: [ 17 ]
-        os: [ ubuntu-20.04, windows-latest]
+        os: [ ubuntu-20.04, windows-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out Git repository
@@ -37,12 +37,29 @@ jobs:
           distribution: 'temurin'
       - run: ./mvnw verify -B -e
 
-  release:
+  release-ubuntu:
     needs: verify
-    strategy:
-      matrix:
-        os: [ ubuntu-20.04, windows-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Install Java and Maven
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+      - name: publish to snapshot
+        run: ./mvnw -Pnative,dist package -e -B
+      - run: mkdir staging && cp -r target/distributions/*.* staging
+      - uses: actions/upload-artifact@v3
+        with:
+           name: Package
+           path: staging
+
+  release-windows:
+    needs: verify
+    runs-on: windows-latest
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
