@@ -53,4 +53,11 @@ jobs:
           java-version: 17
           distribution: 'temurin'
       - name: publish to snapshot
-        run: ./mvnw -Pnative,dist package -X
+        run: ./mvnw -Pnative,dist package -e -B
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: cli-artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R
