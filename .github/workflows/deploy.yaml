@@ -56,12 +56,24 @@ jobs:
         with:
            name: Package
            path: staging
+
   release-macos:
     needs: verify
     runs-on: macos-latest
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
+
+      - name: Install GraalVM
+        uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: 17
+          distribution: 'graalvm'
+      - name: Set up GraalVM Native Image toolchain
+        uses: helpermethod/graalvm-native-image-toolchain@0.0.2
+        with:
+          java-version: 17
+          graalvm-version: '22.3.2'
 
       - name: Install Java and Maven
         uses: actions/setup-java@v3
