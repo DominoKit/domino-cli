@@ -57,7 +57,7 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: cli-artifacts
+          name: my-artifact
 
       - name: Display structure of downloaded files
         run: ls -R
