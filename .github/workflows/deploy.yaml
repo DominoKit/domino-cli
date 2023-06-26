@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         java-version: [ 17 ]
-        os: [ubuntu-20.04, windows-latest]
+        os: [ubuntu-20.04]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out Git repository
@@ -41,13 +41,11 @@ jobs:
     needs: verify
     strategy:
       matrix:
-        os: [ ubuntu-20.04, windows-latest ]
+        os: [ ubuntu-20.04 ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
-      - name: Install native image
-        run: gu install native-image
 
       - name: Install Java and Maven
         uses: actions/setup-java@v3
