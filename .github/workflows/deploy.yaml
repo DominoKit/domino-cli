@@ -54,10 +54,8 @@ jobs:
           distribution: 'temurin'
       - name: publish to snapshot
         run: ./mvnw -Pnative,dist package -e -B
-
-      - uses: actions/download-artifact@v3
+      - run: mkdir staging && cp target/*.jar staging
+      - uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
-
-      - name: Display structure of downloaded files
-        run: ls -R
+           name: Package
+           path: staging
