@@ -54,7 +54,7 @@ jobs:
           distribution: 'temurin'
       - name: publish to snapshot
         run: ./mvnw -Pnative,dist package -e -B
-      - run: mkdir staging && cp target/distributions/*.* staging
+      - run: mkdir staging && cp -r target/distributions/*.* staging
       - uses: actions/upload-artifact@v3
         with:
            name: Package
