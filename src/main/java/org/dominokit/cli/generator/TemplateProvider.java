@@ -10,6 +10,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
@@ -18,14 +19,23 @@ public class TemplateProvider {
     private static Configuration cfg;
 
     public static void render(String templatePath, Map<String, Object> context, Writer out) throws IOException, TemplateException {
-        Arrays.stream(Versions.values()).forEach(version -> context.put(version.name(), version.get()));
+        fillVersions(context);
 
         Template template = getEngine().getTemplate(templatePath);
         template.process(context, out);
     }
 
+    private static void fillVersions(Map<String, Object> context) {
+        Arrays.stream(Versions.values())
+                .forEach(version -> {
+                    context.put(version.name(), Optional.ofNullable(System.getProperty(version.getEnvVariable()))
+                            .or(() -> Optional.ofNullable(System.getenv(version.getEnvVariable())))
+                            .orElse(version.get()));
+                });
+    }
+
     public static String render(String templatePath, Map<String, Object> context) throws IOException, TemplateException {
-        Arrays.stream(Versions.values()).forEach(version -> context.put(version.name(), version.get()));
+        fillVersions(context);
         StringWriter out = new StringWriter();
         Template template = getEngine().getTemplate(templatePath);
         template.process(context, out);
