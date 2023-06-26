@@ -69,7 +69,8 @@ jobs:
         with:
           java-version: 17
           version: '22.3.2'
-      - run: gu install native-image
+      - name: Set up GraalVM Native Image toolchain
+        uses: helpermethod/graalvm-native-image-toolchain@0.0.2
 
       - name: Install Java and Maven
         uses: actions/setup-java@v3
