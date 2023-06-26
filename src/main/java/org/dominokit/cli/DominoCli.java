@@ -1,5 +1,6 @@
 package org.dominokit.cli;
 
+import io.quarkus.runtime.annotations.QuarkusMain;
 import org.dominokit.cli.commands.DominoCommand;
 import picocli.CommandLine;
 
@@ -7,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+@QuarkusMain
 public class DominoCli {
 
     private static final Logger LOGGER=Logger.getLogger(DominoCli.class.getName());
