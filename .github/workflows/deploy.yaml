@@ -46,6 +46,8 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
+      - name: Install native image
+        run: gu install native-image
 
       - name: Install Java and Maven
         uses: actions/setup-java@v3
@@ -53,4 +55,4 @@ jobs:
           java-version: 17
           distribution: 'temurin'
       - name: publish to snapshot
-        run: ./mvnw -Pnative,dist package
+        run: ./mvnw -Pnative,dist package -X
