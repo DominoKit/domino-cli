@@ -8,7 +8,7 @@
     <version>HEAD-SNAPSHOT</version>
     <properties>
         <snapshot.version>HEAD-SNAPSHOT</snapshot.version>
-        <next.release.version>1.0.0-RC6</next.release.version>
+        <next.release.version>1.0.0</next.release.version>
         <release.version>${next.release.version}-${snapshot.version}</release.version>
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
@@ -20,7 +20,6 @@
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.0.0</surefire-plugin.version>
         <executable-suffix/>
-        <distribution.directory>${project.build.directory}/distributions</distribution.directory>
         <install4j.home>/opt/install4j</install4j.home>
     </properties>
     <dependencyManagement>
@@ -91,31 +90,6 @@
         </dependency>
     </dependencies>
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>DEBIAN/control</include>
-                    <include>deb-package.sh</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-                <excludes>
-                    <exclude>DEBIAN/control</exclude>
-                    <exclude>deb-package.sh</exclude>
-                </excludes>
-            </resource>
-        </resources>
-        <extensions>
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.7.1</version>
-            </extension>
-        </extensions>
         <plugins>
             <plugin>
                 <groupId>${quarkus.platform.group-id}</groupId>
