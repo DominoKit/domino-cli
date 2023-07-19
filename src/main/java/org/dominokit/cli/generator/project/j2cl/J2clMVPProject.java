@@ -20,7 +20,7 @@ public class J2clMVPProject implements ProjectCreator {
                         .add(new Folder("runConfigurations")
                                 .add(new TemplatedFile("ALL_TESTS.xml", "/app/j2cl/mvp/runConfigurations/ALL_TESTS.xml"))
                                 .add(new TemplatedFile(project.getName()+".xml", "/app/j2cl/mvp/runConfigurations/app.xml"))
-                                .add(new TemplatedFile(project.getName()+"-api.xml", "/app/j2cl/mvp/runConfigurations/app-api.xml"))
+                                .add(new TemplatedFile(project.getName()+"-api.xml", "/app/j2cl/mvp/runConfigurations/backend-api.xml"))
                                 .add(new TemplatedFile(project.getName()+"-dev.xml", "/app/j2cl/mvp/runConfigurations/app-dev.xml"))
                                 .add(new TemplatedFile("Development.xml", "/app/j2cl/mvp/runConfigurations/Development.xml"))
                                 .add(new TemplatedFile("process_sources.xml", "/app/j2cl/mvp/runConfigurations/process_sources.xml"))

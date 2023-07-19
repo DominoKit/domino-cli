@@ -144,7 +144,7 @@
                 <plugin>
                     <groupId>net.ltgt.gwt.maven</groupId>
                     <artifactId>gwt-maven-plugin</artifactId>
-                    <version>1.0.0</version>
+                    <version>1.0.1</version>
                     <extensions>true</extensions>
                     <configuration>
                         <sourceLevel>${r"${maven.compiler.source}"}</sourceLevel>

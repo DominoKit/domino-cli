@@ -45,13 +45,16 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <!-- Do not upgrade past 3.1 to avoid triggering https://issues.apache.org/jira/browse/MSOURCES-95 -->
-                    <!-- Unless you use annotation processors, then upgrade to 3.5.1 at a minimum -->
-                    <version>3.5.1</version>
+                    <version>3.11.0</version>
                     <configuration>
                         <source>${r"${maven.compiler.source}"}</source>
                         <target>${r"${maven.compiler.target}"}</target>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.eclipse.jetty</groupId>
