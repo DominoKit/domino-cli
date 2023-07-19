@@ -25,8 +25,7 @@ jobs:
     strategy:
       matrix:
         java-version: [ 17 ]
-        os: [ ubuntu-20.04, windows-latest, macos-latest ]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v3
@@ -49,71 +48,18 @@ jobs:
         with:
           java-version: 17
           distribution: 'temurin'
-      - name: publish to snapshot
-        run: ./mvnw -Pnative,dist package -e -B
-      - run: mkdir staging && cp -r target/distributions/*.* staging
-      - uses: actions/upload-artifact@v3
-        with:
-           name: Package
-           path: staging
 
-  release-macos:
-    needs: verify
-    runs-on: macos-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v3
-
-      - name: Install GraalVM
-        uses: graalvm/setup-graalvm@v1
+      - uses: luangong/setup-install4j@v1
         with:
-          java-version: 17
-          distribution: 'graalvm'
-      - name: Set up GraalVM Native Image toolchain
-        uses: helpermethod/graalvm-native-image-toolchain@0.0.2
-        with:
-          java-version: 17
-          graalvm-version: '22.3.2'
-
-      - name: Install Java and Maven
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: 'temurin'
-      - name: publish to snapshot
-        run: ./mvnw -Pnative,dist package -e -B
-      - run: mkdir staging && cp -r target/distributions/*.* staging
-      - uses: actions/upload-artifact@v3
-        with:
-           name: Package
-           path: staging
-
-  release-windows:
-    needs: verify
-    runs-on: windows-latest
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v3
-
-      - name: Install GraalVM
-        uses: graalvm/setup-graalvm@v1
-        with:
-          java-version: 17
-          distribution: 'graalvm'
-      - name: Set up GraalVM Native Image toolchain
-        uses: helpermethod/graalvm-native-image-toolchain@0.0.2
-        with:
-          java-version: 17
-          graalvm-version: '22.3.2'
-
-      - name: Install Java and Maven
-        uses: actions/setup-java@v3
-        with:
-          java-version: 17
-          distribution: 'temurin'
-      - name: publish to snapshot
-        run: ./mvnw -P 'native,dist' package -e -B
-      - run: mkdir staging && cp -r target/distributions/*.* staging
+          version: 10.0.6
+          license: ${{ secrets.INSTALL4J_LICENSE }}
+      - name: development media
+        if: false == contains(github.ref, 'master')
+        run: ./mvnw -Pinstall4j package -e -B
+      - name: release media
+        if: contains(github.ref, 'master')
+        run: ./mvnw -Pinstall4j,release package -e -B
+      - run: mkdir staging && cp -r target/media/*.* staging
       - uses: actions/upload-artifact@v3
         with:
            name: Package
