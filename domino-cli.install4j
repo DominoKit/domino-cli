@@ -2,7 +2,7 @@
 <install4j version="10.0.6" transformSequenceNumber="10">
   <directoryPresets config="logo/domino-logo.png" />
   <application name="dominokit-cli" applicationId="0518-2014-5243-3779" mediaDir="build/install4j" shortName="dominokit-cli" publisher="Dominokit" publisherWeb="www.dominokit.org" version="${compiler:majorVersion}" macVolumeId="6cb917d1c585346b" javaMinVersion="1.8.0" jdkMode="jdk" jdkName="JDK 1.8">
-    <jreBundles jdkProviderId="AdoptOpenJDK" />
+    <jreBundles jdkProviderId="AdoptOpenJDK" release="17/jdk-17.0.7+7" />
   </application>
   <files>
     <mountPoints>
