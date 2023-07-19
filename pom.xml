@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dominokit</groupId>
     <artifactId>domino-cli</artifactId>
-    <version>HEAD-SNAPSHOT</version>
+    <version>1.0.0</version>
     <properties>
         <snapshot.version>HEAD-SNAPSHOT</snapshot.version>
         <next.release.version>1.0.0</next.release.version>
