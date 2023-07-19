@@ -154,6 +154,13 @@ return console.askOkCancel(message, true);
                   <property name="itemName" type="string">${compiler:sys.fullName} ${compiler:sys.version}</property>
                 </serializedBean>
               </action>
+              <action id="79" beanClass="com.install4j.runtime.beans.actions.misc.ModifyEnvironmentVariableAction" actionElevationType="elevated" rollbackBarrierExitCode="0">
+                <serializedBean>
+                  <property name="type" type="enum" class="com.install4j.runtime.beans.actions.misc.ModifyStringType" value="APPEND" />
+                  <property name="value" type="string">${installer:sys.installationDir}</property>
+                  <property name="variableName" type="string">Path</property>
+                </serializedBean>
+              </action>
             </actions>
             <formComponents>
               <formComponent id="16" beanClass="com.install4j.runtime.beans.formcomponents.ProgressComponent">
