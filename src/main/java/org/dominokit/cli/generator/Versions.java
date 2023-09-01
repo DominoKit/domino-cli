@@ -1,7 +1,7 @@
 package org.dominokit.cli.generator;
 
 public enum Versions {
-    domino_ui_version("DOMINO_CLI_DOMINO_UI_VERSION","1.0.0"),
+    domino_ui_version("DOMINO_CLI_DOMINO_UI_VERSION","1.0.1"),
     domino_history_version("DOMINO_CLI_DOMINO_HISTORY_VERSION","1.0.0"),
     domino_mvp_version("DOMINO_CLI_DOMINO_MVP_VERSION","1.0.0"),
     domino_rest_version("DOMINO_CLI_DOMINO_REST_VERSION","1.0.0"),
