@@ -21,14 +21,17 @@ public class App implements EntryPoint, ElementsFactory, DominoCss {
         var layout = AppLayout.create("Domino-ui starter");
 
         layout.withLeftDrawer((parent, drawer) -> {
-            Tree.<String>create("Menu")
+            drawer.appendChild(Tree.<String>create("Menu")
                     .appendChild(TreeItem.create(Icons.widgets(), "Menu 1"))
                     .appendChild(TreeItem.create(Icons.widgets(), "Menu 2"))
                     .addSelectionListener((source, selection) -> {
-                        layout.setContent(Card.create(source.get().getValue())
-                                .appendChild(p("Welcome to domino-ui , you are viewing "+source.get().getValue()+" content")));
+                        layout.withContent((parent1, content) -> {
+                            content.clearElement()
+                                    .appendChild(Card.create(source.get().getValue())
+                                            .appendChild(p("Welcome to domino-ui , you are viewing "+source.get().getValue()+" content")));
+                        });
 
-                    });
+                    }));
         });
         body().appendChild(layout);
     }

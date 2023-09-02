@@ -16,7 +16,7 @@ public class App implements EntryPoint {
      */
     public void onModuleLoad() {
         HTMLDivElement div= Js.cast(DomGlobal.document.createElement("div"));
-        HTMLHeadingElement h1= Js.cast(DomGlobal.document.createElement("h1"));
+        HTMLHeadingElement h1 = Js.cast(DomGlobal.document.createElement("h1"));
         h1.textContent ="Hello from j2cl";
         div.appendChild(h1);
         DomGlobal.document.body.appendChild(div);

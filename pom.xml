@@ -9,7 +9,7 @@
     <properties>
         <snapshot.version>HEAD-SNAPSHOT</snapshot.version>
         <next.release.version>2.0.0</next.release.version>
-        <release.version>${next.release.version}-${snapshot.version}</release.version>
+        <release.version>0.0.0-HEAD-SNAPSHOT</release.version>
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -169,6 +169,7 @@
             </activation>
             <properties>
                 <compiler.majorVersion>${project.version}</compiler.majorVersion>
+                <release.version>${project.version}</release.version>
             </properties>
         </profile>
         <profile>

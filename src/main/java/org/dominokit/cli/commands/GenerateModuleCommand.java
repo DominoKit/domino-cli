@@ -1,5 +1,6 @@
 package org.dominokit.cli.commands;
 
+import org.dominokit.cli.VersionProfile;
 import org.dominokit.cli.generator.module.Module;
 import org.dominokit.cli.generator.module.ModuleCreatorFactory;
 
@@ -30,6 +31,16 @@ public class GenerateModuleCommand implements Runnable {
             description = "If true it will merge client an shared as one module, a backend module will not be generated"
     )
     private boolean single = false;
+
+    @Option(
+            names = {"-v", "--version"},
+            description = "DominoKit tools version " +
+                    "\n\t\t -[v1] : Will generate a project using DominoKi tools version 1.x.x" +
+                    "\n\t\t -[v2] : Will generate a project using DominoKi tools version 2.x.x" +
+                    "\n\t\t -[dev] : Will generate a project using DominoKi tools HEAD-SNAPSHOT versions",
+            defaultValue = "v2"
+    )
+    private String version;
 
     @Option(
             names = {"-t", "--tests"},
@@ -78,6 +89,7 @@ public class GenerateModuleCommand implements Runnable {
     @Override
     public void run() {
 
+        VersionProfile.setVersion(version);
         PathUtils.setWorkingDir(workingDire);
 
         try {
