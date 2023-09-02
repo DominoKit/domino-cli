@@ -2,7 +2,7 @@
   <configuration default="false" name="Development" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
     <toRun type="Application" name="${name}-dev" />
     <toRun type="MavenRunConfiguration" name="super-dev-mode" />
-    <toRun type="MavenRunConfiguration" name="backend-api" />
+    <toRun type="QuarkusRunConfigurationType" name="${name}-api" />
     <method />
   </configuration>
 </component>

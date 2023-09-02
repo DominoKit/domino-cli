@@ -4,18 +4,17 @@ import elemental2.dom.HTMLDivElement;
 import org.dominokit.domino.view.BaseElementView;
 
 import org.dominokit.domino.api.client.annotations.UiView;
-import org.dominokit.domino.ui.utils.DominoElement;
+import org.dominokit.domino.ui.elements.DivElement;
 
 import ${rootPackage}.${subpackage}.client.presenters.${prefix}Proxy;
 import ${rootPackage}.${subpackage}.client.views.${prefix}View;
 
-import static org.jboss.elemento.Elements.h;
 
 @UiView(presentable = ${prefix}Proxy.class)
 public class ${prefix}ViewImpl extends BaseElementView<HTMLDivElement> implements ${prefix}View{
 
     private ${prefix}UiHandlers uiHandlers;
-    private DominoElement<HTMLDivElement> root = DominoElement.div();
+    private DivElement root = div();
 
     @Override
     public HTMLDivElement init() {
