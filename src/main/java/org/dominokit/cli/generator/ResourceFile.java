@@ -1,6 +1,7 @@
 package org.dominokit.cli.generator;
 
 import org.apache.commons.io.IOUtils;
+import org.dominokit.cli.VersionProfile;
 import org.dominokit.cli.generator.exception.FailedToCreateResourceException;
 
 import java.io.File;
@@ -44,7 +45,7 @@ public class ResourceFile implements ProjectFile {
                 Path filePath = Paths.get(path, name).toAbsolutePath();
                 File file = filePath.toFile();
                 if (!file.exists()) {
-                    byte[] content = IOUtils.resourceToByteArray("projects-templates"+template, getClass().getClassLoader());
+                    byte[] content = IOUtils.resourceToByteArray("projects-templates/"+ VersionProfile.get().getTemplatesPath()+template, getClass().getClassLoader());
                     Files.write(filePath, content);
                 }
             } catch (IOException  e) {

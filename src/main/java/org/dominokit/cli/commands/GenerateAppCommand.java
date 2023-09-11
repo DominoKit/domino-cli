@@ -3,6 +3,7 @@ package org.dominokit.cli.commands;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.model.Model;
 import org.dominokit.cli.PomUtil;
+import org.dominokit.cli.VersionProfile;
 import org.dominokit.cli.generator.project.Project;
 import org.dominokit.cli.generator.project.ProjectCreator;
 import org.dominokit.cli.generator.project.ProjectCreatorFactory;
@@ -56,6 +57,16 @@ public class GenerateAppCommand implements Runnable {
     private String type;
 
     @Option(
+            names = {"-v", "--version"},
+            description = "DominoKit tools version " +
+                    "\n\t\t -[v1] : Will generate a project using DominoKi tools version 1.x.x" +
+                    "\n\t\t -[v2] : Will generate a project using DominoKi tools version 2.x.x" +
+                    "\n\t\t -[dev] : Will generate a project using DominoKi tools HEAD-SNAPSHOT versions",
+            defaultValue = "v2"
+    )
+    private String version;
+
+    @Option(
             names = {"-api", "--generate-api"},
             fallbackValue = "true",
             defaultValue = "true",
@@ -73,6 +84,8 @@ public class GenerateAppCommand implements Runnable {
 
     @Override
     public void run() {
+
+        VersionProfile.setVersion(version);
 
         Model parentPom = null;
         PathUtils.setWorkingDir(workingDire);

@@ -1,0 +1,32 @@
+package ${rootPackage}.${subpackage}.client.presenters;
+
+import org.dominokit.domino.api.client.annotations.presenter.*;
+import org.dominokit.domino.api.client.mvp.presenter.ViewablePresenter;
+import org.dominokit.domino.api.shared.extension.PredefinedSlots;
+import ${rootPackage}.${subpackage}.client.views.${prefix}View;
+import ${rootPackage}.${subpackage}.shared.services.${prefix}ServiceFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@PresenterProxy(name = "${prefix}")
+@AutoRoute(token = "${token}")
+@Slot(PredefinedSlots.BODY_SLOT)
+@AutoReveal
+public class ${prefix}Proxy extends ViewablePresenter<${prefix}View> implements ${prefix}View.${prefix}UiHandlers {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(${prefix}Proxy.class);
+
+    @OnActivated
+    public void on${prefix}Init(){
+        LOGGER.info("${prefix} initialized");
+    }
+
+    @OnReveal
+    public void on${prefix}Revealed() {
+        LOGGER.info("${prefix} view revealed");
+        ${prefix}ServiceFactory.INSTANCE.greeting("${prefix}")
+                .onSuccess(message -> view.welcomeMessage(message))
+                .onFailed(failedResponse -> view.welcomeMessage("Sadly no response from server.!"))
+                .send();
+    }
+}

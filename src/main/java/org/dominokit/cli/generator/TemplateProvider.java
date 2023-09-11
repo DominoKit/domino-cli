@@ -4,6 +4,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import org.dominokit.cli.VersionProfile;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -26,12 +27,12 @@ public class TemplateProvider {
     }
 
     private static void fillVersions(Map<String, Object> context) {
-        Arrays.stream(Versions.values())
-                .forEach(version -> {
-                    context.put(version.name(), Optional.ofNullable(System.getProperty(version.getEnvVariable()))
-                            .or(() -> Optional.ofNullable(System.getenv(version.getEnvVariable())))
-                            .orElse(version.get()));
-                });
+        VersionProfile.get()
+                .getToolsVersions()
+                .forEach(version -> context.put(version.getKey(), Optional.ofNullable(System.getProperty(version.getKey()))
+                                .orElse(version.getVersion())
+                        )
+                );
     }
 
     public static String render(String templatePath, Map<String, Object> context) throws IOException, TemplateException {
@@ -43,16 +44,16 @@ public class TemplateProvider {
     }
 
     private static Configuration getEngine() {
-            if (isNull(cfg)) {
-                cfg = new Configuration(Configuration.VERSION_2_3_29);
-                cfg.setClassLoaderForTemplateLoading(TemplateProvider.class.getClassLoader(), "/projects-templates");
-                cfg.setDefaultEncoding("UTF-8");
-                cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
-                cfg.setLogTemplateExceptions(false);
-                cfg.setWrapUncheckedExceptions(true);
-                cfg.setFallbackOnNullLoopVariable(false);
+        if (isNull(cfg)) {
+            cfg = new Configuration(Configuration.VERSION_2_3_29);
+            cfg.setClassLoaderForTemplateLoading(TemplateProvider.class.getClassLoader(), "/projects-templates/"+VersionProfile.get().getTemplatesPath());
+            cfg.setDefaultEncoding("UTF-8");
+            cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
+            cfg.setLogTemplateExceptions(false);
+            cfg.setWrapUncheckedExceptions(true);
+            cfg.setFallbackOnNullLoopVariable(false);
 
-            }
-            return cfg;
+        }
+        return cfg;
     }
 }
