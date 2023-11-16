@@ -50,7 +50,7 @@ public class VersionProfile {
                         ToolVersion.of("quarkus_version", "2.16.7.Final"),
                         ToolVersion.of("vertx_version", "3.9.4"),
                         ToolVersion.of("gwt_version", "2.10.0"),
-                        ToolVersion.of("j2cl_maven_plugin_version", "0.21")
+                        ToolVersion.of("j2cl_maven_plugin_version", "0.21.0")
                 );
             case "v2":
                 return new VersionProfile(version, version,
@@ -62,7 +62,7 @@ public class VersionProfile {
                         ToolVersion.of("quarkus_version", "2.16.7.Final"),
                         ToolVersion.of("vertx_version", "3.9.4"),
                         ToolVersion.of("gwt_version", "2.10.0"),
-                        ToolVersion.of("j2cl_maven_plugin_version", "0.21")
+                        ToolVersion.of("j2cl_maven_plugin_version", "0.21.0")
                 );
             case "dev":
                 return new VersionProfile(version, "v2",
@@ -74,7 +74,7 @@ public class VersionProfile {
                         ToolVersion.of("quarkus_version", "2.16.7.Final"),
                         ToolVersion.of("vertx_version", "3.9.4"),
                         ToolVersion.of("gwt_version", "2.10.0"),
-                        ToolVersion.of("j2cl_maven_plugin_version", "0.21")
+                        ToolVersion.of("j2cl_maven_plugin_version", "0.21.0")
                 );
 
         }
