@@ -55,9 +55,9 @@ public class VersionProfile {
             case "v2":
                 return new VersionProfile(version, version,
                         ToolVersion.of("domino_ui_version", "2.0.0-RC5"),
-                        ToolVersion.of("domino_history_version", "1.0.1"),
+                        ToolVersion.of("domino_history_version", "1.0.3"),
                         ToolVersion.of("domino_mvp_version", "2.0.0-RC2"),
-                        ToolVersion.of("domino_rest_version", "1.0.1"),
+                        ToolVersion.of("domino_rest_version", "1.0.2"),
                         ToolVersion.of("domino_jackson_version", "1.0.4"),
                         ToolVersion.of("quarkus_version", "2.16.7.Final"),
                         ToolVersion.of("vertx_version", "3.9.4"),
