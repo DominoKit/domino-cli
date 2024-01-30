@@ -44,7 +44,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>com.google.gwt</groupId>
+                <groupId>org.gwtproject</groupId>
                 <artifactId>gwt</artifactId>
                 <version>${r"${gwt.version}"}</version>
                 <type>pom</type>
