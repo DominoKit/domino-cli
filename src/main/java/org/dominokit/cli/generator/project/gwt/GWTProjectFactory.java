@@ -9,6 +9,7 @@ public class GWTProjectFactory {
         switch (projectType.toLowerCase()){
             case "basic" : return new GwtBasicProject();
             case "mvp" : return new GwtMVPProject();
+            case "brix" : return new GwtBrixProject();
             default:throw new InvalidProjectTypeException("Invalid project type : ["+projectType+"]");
         }
     }

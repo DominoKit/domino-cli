@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>${groupId}</groupId>
+    <artifactId>${name}</artifactId>
+    <version>${version}</version>
+  </parent>
+
+  <artifactId>${name}-frontend</artifactId>
+  <packaging>gwt-app</packaging>
+
+  <properties>
+    <destDir>${r"${project.build.outputDirectory}"}/META-INF/resources/webjars/domino-ui</destDir>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>${groupId}</groupId>
+      <artifactId>${name}-shared</artifactId>
+      <version>${r"${project.version}"}</version>
+    </dependency>
+    <dependency>
+      <groupId>${groupId}</groupId>
+      <artifactId>${name}-shared</artifactId>
+      <version>${r"${project.version}"}</version>
+      <classifier>sources</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.gwtproject</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gwtproject</groupId>
+      <artifactId>gwt-dev</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-brix-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.dagger</groupId>
+      <artifactId>dagger-compiler</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.auto.service</groupId>
+      <artifactId>auto-service</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-brix-processor</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-auto-processor</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.dominokit</groupId>
+      <artifactId>domino-ui</artifactId>
+      <classifier>sources</classifier>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/webjar.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>net.ltgt.gwt.maven</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <configuration>
+          <moduleName>${rootPackage}.App</moduleName>
+          <moduleShortName>app</moduleShortName>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

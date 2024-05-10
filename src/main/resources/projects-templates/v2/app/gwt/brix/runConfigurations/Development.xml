@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Development" type="CompoundRunConfigurationType">
+    <toRun name="Frontend" type="MavenRunConfiguration" />
+    <toRun name="Server" type="QuarkusRunConfigurationType" />
+    <method v="2" />
+  </configuration>
+</component>

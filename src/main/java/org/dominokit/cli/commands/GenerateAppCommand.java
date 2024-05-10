@@ -51,8 +51,9 @@ public class GenerateAppCommand implements Runnable {
             names = {"-t", "--type"},
             description = "The type of the project :" +
                     "\n\t\t -[basic] : will generate a simple project with (client, shared, server)" +
-                    "\n\t\t -[mvp] : will generate a domino-mvp project",
-            defaultValue = "mvp"
+                    "\n\t\t -[mvp] : will generate a domino-mvp project template"+
+                    "\n\t\t -[brix] : will generate a domino-brix project template",
+            defaultValue = "brix"
     )
     private String type;
 
@@ -70,7 +71,7 @@ public class GenerateAppCommand implements Runnable {
             names = {"-api", "--generate-api"},
             fallbackValue = "true",
             defaultValue = "true",
-            description = "If true will generate an api module for REST endpoints implementation, current implementation is Quarkus with jax-rs."
+            description = "If true will generate an api module for REST endpoints implementation, current implementation is Quarkus with jax-rs. - not supported by Brix app -"
     )
     private boolean generateApi;
 
