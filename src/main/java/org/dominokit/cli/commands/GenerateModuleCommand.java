@@ -1,5 +1,6 @@
 package org.dominokit.cli.commands;
 
+import org.dominokit.cli.PomUtil;
 import org.dominokit.cli.VersionProfile;
 import org.dominokit.cli.generator.module.Module;
 import org.dominokit.cli.generator.module.ModuleCreatorFactory;
@@ -50,7 +51,6 @@ public class GenerateModuleCommand implements Runnable {
     )
     private boolean generateTests = false;
 
-
     @Option(
             names = {"-c", "--compiler"},
             fallbackValue = "gwt",
@@ -58,6 +58,15 @@ public class GenerateModuleCommand implements Runnable {
             description = "The Java to JavaScript compiler to be used possible values [gwt, j2cl] default is [gwt]"
     )
     private String compiler;
+    @Option(
+            names = {"-f", "--framework"},
+            fallbackValue = "mvp",
+            defaultValue = "mvp",
+        description = "The target framework " +
+            "\n\t\t -[mvp] : [Default] Will generate domino-mvp module." +
+            "\n\t\t -[brix] : Will generate domino-brix module"
+    )
+    private String framework;
 
     @Option(
             names = {"-sp", "--subpackage"},
@@ -81,7 +90,7 @@ public class GenerateModuleCommand implements Runnable {
             names = {"-b", "--backend"},
             fallbackValue = "false",
             defaultValue = "false",
-            description = "if true will generate a domino-mvp backend module, default implementation is vertx."
+            description = "if true will generate a domino-mvp backend module, default implementation is vertx. - not supported by brix -"
     )
     private boolean backend = false;
 
@@ -109,7 +118,7 @@ public class GenerateModuleCommand implements Runnable {
             }
             module.setSubPackage(subPackage);
 
-            ModuleCreatorFactory.get(compiler, single).create(module.init());
+            ModuleCreatorFactory.get(framework, compiler, single).create(module.init());
             System.out.println("The following module have been created");
             System.out.println(module);
         } catch (Exception e) {

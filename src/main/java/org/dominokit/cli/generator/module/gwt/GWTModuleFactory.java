@@ -4,10 +4,14 @@ import org.dominokit.cli.generator.module.ModuleCreator;
 
 public class GWTModuleFactory {
 
-    public static ModuleCreator get(boolean single) {
-        if(single){
-            return new GwtSingleModule();
+    public static ModuleCreator get(String type, boolean single) {
+        if("mvp".equals(type)) {
+            if (single) {
+                return new GwtSingleModule();
+            }
+            return new GwtMultiModule();
+        }else {
+            return new BrixMultiModule();
         }
-        return new GwtMultiModule();
     }
 }

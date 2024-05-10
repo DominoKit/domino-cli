@@ -6,10 +6,10 @@ import org.dominokit.cli.generator.module.j2cl.J2CLModuleFactory;
 
 public class ModuleCreatorFactory {
 
-    public static ModuleCreator get(String compiler, boolean single){
+    public static ModuleCreator get(String projectType, String compiler, boolean single){
 
         switch (compiler.toLowerCase()){
-            case "gwt": return GWTModuleFactory.get(single);
+            case "gwt": return GWTModuleFactory.get(projectType, single);
             case "j2cl": return J2CLModuleFactory.get(single);
             default:throw new InvalidCompilerTypeException("Invalid compiler type : ["+compiler+"]");
         }

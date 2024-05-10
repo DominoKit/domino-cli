@@ -37,6 +37,9 @@ public class Module extends Folder {
     public String getModuleName(){
         return NameUtil.capitalizedName(name);
     }
+    public String getModulePackage(){
+        return name.toLowerCase();
+    }
 
     public Project getProject() {
         return project;
@@ -166,6 +169,7 @@ public class Module extends Folder {
         context.put("generateTests", generateTests);
         context.put("compiler", compiler);
         context.put("generateBackend", generateBackend);
+        context.put("modulePackage", getModulePackage());
 
         return context;
     }
@@ -184,6 +188,7 @@ public class Module extends Folder {
                 "\n\t generateTests=" + generateTests +
                 "\n\t compiler='" + compiler + '\'' +
                 "\n\t generateBackend=" + generateBackend +
+                "\n\t modulePackage=" + getModulePackage() +
                 '}';
     }
 }
