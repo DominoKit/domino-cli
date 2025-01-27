@@ -57,10 +57,10 @@ public class VersionProfile {
                 );
             case "v2":
                 return new VersionProfile(version, version,
-                        ToolVersion.of("domino_ui_version", "2.0.1"),
-                        ToolVersion.of("domino_history_version", "1.0.3"),
+                        ToolVersion.of("domino_ui_version", "2.0.3"),
+                        ToolVersion.of("domino_history_version", "1.0.4"),
                         ToolVersion.of("domino_mvp_version", "2.0.0-RC2"),
-                        ToolVersion.of("domino_rest_version", "2.0.0-RC1"),
+                        ToolVersion.of("domino_rest_version", "2.0.0-RC2"),
                         ToolVersion.of("domino_jackson_version", "1.0.4"),
                         ToolVersion.of("domino_auto_version", "1.0.2"),
                         ToolVersion.of("domino_brix_version", "HEAD-SNAPSHOT"),
