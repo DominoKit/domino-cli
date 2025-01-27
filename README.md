@@ -114,3 +114,9 @@ Commands:
   help  Displays help information about the specified command
 
 ```
+
+### Build
+
+```
+./mvnw -Pinstall4j,release package -Dinstall4j.home=/home/vegegoku/install4j10 -Drelease.version=0.0.0-HEADSNAPSHOT
+```

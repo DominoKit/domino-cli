@@ -35,6 +35,7 @@
         <domino.jackson.version>${domino_jackson_version}</domino.jackson.version>
         <domino.auto.version>${domino_auto_version}</domino.auto.version>
         <domino.brix.version>${domino_brix_version}</domino.brix.version>
+        <dagger.version>${dagger_version}</dagger.version>
     </properties>
 
     <dependencyManagement>

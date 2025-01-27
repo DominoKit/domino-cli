@@ -49,7 +49,7 @@
     <dependency>
       <groupId>com.google.dagger</groupId>
       <artifactId>dagger-compiler</artifactId>
-      <version>2.49</version>
+      <version>${r"${dagger.version}"}</version>
       <scope>provided</scope>
     </dependency>
 

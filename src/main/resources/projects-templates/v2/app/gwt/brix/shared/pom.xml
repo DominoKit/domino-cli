@@ -17,7 +17,7 @@
     </dependency>
     <dependency>
       <groupId>org.dominokit</groupId>
-      <artifactId>domino-rest-client</artifactId>
+      <artifactId>domino-rest-shared</artifactId>
       <version>${r"${domino.rest.version}"}</version>
     </dependency>
     <dependency>

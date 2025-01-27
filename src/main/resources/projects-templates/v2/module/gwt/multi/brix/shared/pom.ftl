@@ -40,6 +40,19 @@
       <classifier>sources</classifier>
     </dependency>
 
+    <dependency>
+      <groupId>com.google.dagger</groupId>
+      <artifactId>dagger</artifactId>
+      <version>${r"${dagger.version}"}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.dagger</groupId>
+      <artifactId>dagger-compiler</artifactId>
+      <version>${r"${dagger.version}"}</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>

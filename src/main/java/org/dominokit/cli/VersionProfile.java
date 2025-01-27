@@ -52,6 +52,7 @@ public class VersionProfile {
                         ToolVersion.of("quarkus_version", "2.16.7.Final"),
                         ToolVersion.of("vertx_version", "3.9.4"),
                         ToolVersion.of("gwt_version", "2.10.0"),
+                        ToolVersion.of("dagger_version", "2.51.1"),
                         ToolVersion.of("j2cl_maven_plugin_version", "0.21.0")
                 );
             case "v2":
@@ -66,6 +67,7 @@ public class VersionProfile {
                         ToolVersion.of("quarkus_version", "3.6.5"),
                         ToolVersion.of("vertx_version", "3.9.4"),
                         ToolVersion.of("gwt_version", "2.11.0"),
+                        ToolVersion.of("dagger_version", "2.51.1"),
                         ToolVersion.of("j2cl_maven_plugin_version", "0.22.0")
                 );
             case "dev":
@@ -80,6 +82,7 @@ public class VersionProfile {
                         ToolVersion.of("quarkus_version", "3.6.5"),
                         ToolVersion.of("vertx_version", "3.9.4"),
                         ToolVersion.of("gwt_version", "2.11.0"),
+                        ToolVersion.of("dagger_version", "2.51.1"),
                         ToolVersion.of("j2cl_maven_plugin_version", "0.22.0")
                 );
 
