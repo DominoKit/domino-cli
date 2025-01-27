@@ -63,7 +63,7 @@ public class VersionProfile {
                         ToolVersion.of("domino_rest_version", "2.0.0-RC2"),
                         ToolVersion.of("domino_jackson_version", "1.0.4"),
                         ToolVersion.of("domino_auto_version", "1.0.2"),
-                        ToolVersion.of("domino_brix_version", "HEAD-SNAPSHOT"),
+                        ToolVersion.of("domino_brix_version", "1.0.0-RC1"),
                         ToolVersion.of("quarkus_version", "3.6.5"),
                         ToolVersion.of("vertx_version", "3.9.4"),
                         ToolVersion.of("gwt_version", "2.11.0"),
