@@ -57,7 +57,7 @@ public class VersionProfile {
                 );
             case "v2":
                 return new VersionProfile(version, version,
-                        ToolVersion.of("domino_ui_version", "2.0.3"),
+                        ToolVersion.of("domino_ui_version", "2.0.4"),
                         ToolVersion.of("domino_history_version", "1.0.4"),
                         ToolVersion.of("domino_mvp_version", "2.0.0-RC2"),
                         ToolVersion.of("domino_rest_version", "2.0.0-RC2"),
@@ -66,7 +66,7 @@ public class VersionProfile {
                         ToolVersion.of("domino_brix_version", "1.0.0-RC1"),
                         ToolVersion.of("quarkus_version", "3.6.5"),
                         ToolVersion.of("vertx_version", "3.9.4"),
-                        ToolVersion.of("gwt_version", "2.11.0"),
+                        ToolVersion.of("gwt_version", "2.12.2"),
                         ToolVersion.of("dagger_version", "2.51.1"),
                         ToolVersion.of("j2cl_maven_plugin_version", "0.22.0")
                 );
@@ -81,7 +81,7 @@ public class VersionProfile {
                         ToolVersion.of("domino_brix_version", "HEAD-SNAPSHOT"),
                         ToolVersion.of("quarkus_version", "3.6.5"),
                         ToolVersion.of("vertx_version", "3.9.4"),
-                        ToolVersion.of("gwt_version", "2.11.0"),
+                        ToolVersion.of("gwt_version", "2.12.2"),
                         ToolVersion.of("dagger_version", "2.51.1"),
                         ToolVersion.of("j2cl_maven_plugin_version", "0.22.0")
                 );
