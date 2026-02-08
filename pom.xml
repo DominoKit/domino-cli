@@ -9,7 +9,7 @@
     <properties>
         <snapshot.version>HEAD-SNAPSHOT</snapshot.version>
         <next.release.version>2.0.0</next.release.version>
-        <release.version>0.0.0-HEAD-SNAPSHOT</release.version>
+        <release.version>2.0.0</release.version>
         <compiler-plugin.version>3.12.1</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
