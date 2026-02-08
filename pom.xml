@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.dominokit</groupId>
     <artifactId>domino-cli</artifactId>
-    <version>2.0.0-RC5</version>
+    <version>2.0.0</version>
     <properties>
         <snapshot.version>HEAD-SNAPSHOT</snapshot.version>
-        <next.release.version>2.0.0-RC5</next.release.version>
+        <next.release.version>2.0.0</next.release.version>
         <release.version>0.0.0-HEAD-SNAPSHOT</release.version>
-        <compiler-plugin.version>3.11.0</compiler-plugin.version>
+        <compiler-plugin.version>3.12.1</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -50,27 +50,30 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.7</version>
+            <version>2.14.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.velocity/velocity-engine-core -->
         <dependency>
             <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity</artifactId>
-            <version>1.7</version>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.4.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.velocity.tools/velocity-tools-generic -->
         <dependency>
-            <groupId>org.apache.velocity</groupId>
-            <artifactId>velocity-tools</artifactId>
-            <version>2.0</version>
+            <groupId>org.apache.velocity.tools</groupId>
+            <artifactId>velocity-tools-generic</artifactId>
+            <version>3.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.dominokit</groupId>
             <artifactId>domino-jackson</artifactId>
-            <version>1.0.0-RC6</version>
+            <version>1.0.5</version>
         </dependency>
         <dependency>
             <groupId>org.dominokit</groupId>
             <artifactId>domino-jackson-processor</artifactId>
-            <version>1.0.0-RC6</version>
+            <version>1.0.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -87,6 +90,11 @@
             <groupId>io.quarkiverse.freemarker</groupId>
             <artifactId>quarkus-freemarker</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>3.6.1</version>
         </dependency>
     </dependencies>
     <build>

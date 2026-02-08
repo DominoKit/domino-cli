@@ -15,11 +15,27 @@ import org.dominokit.cli.generator.exception.FailedToCreateResourceException;
 import org.dominokit.cli.generator.module.Module;
 import org.dominokit.cli.generator.module.ModuleCreator;
 
+/**
+ * Generates a multi-module Brix scaffold (frontend, UI, shared).
+ */
 public class BrixMultiModule implements ModuleCreator {
+    /**
+     * Creates the Brix module structure using default templates.
+     *
+     * @param module module model
+     * @throws IOException when file creation fails
+     */
     public void create(Module module) throws IOException {
        create(module, "/module/gwt/multi/brix");
     }
 
+    /**
+     * Creates the Brix module structure using a specific templates base path.
+     *
+     * @param module module model
+     * @param templatesBasePath templates base path
+     * @throws IOException when file creation fails
+     */
     public void create(Module module, String templatesBasePath) throws IOException {
 
         module
@@ -37,7 +53,6 @@ public class BrixMultiModule implements ModuleCreator {
                                                 .add(new Package("views."+module.getSubPackage())
                                                     .add(new TemplatedFile(module.getPrefix()+"View.java", templatesBasePath + "/frontend/source/View.java"))
                                                 )
-                                                .add(new TemplatedFile("package-info.java", templatesBasePath + "/frontend/source/package-info.java"))
                                             )
                                         )
                                 )
@@ -50,13 +65,14 @@ public class BrixMultiModule implements ModuleCreator {
                                 .add(new Folder("java")
                                         .add(new Package(module.getProject().getRootPackage())
                                             .add(new Package(module.getModulePackage())
+                                                .add(new Package("components")
+                                                    .add(new TemplatedFile(module.getPrefix()+"Component.java", templatesBasePath + "/frontend-ui/source/Component.java"))
+                                                )
                                                 .add(new Package("ui.views")
                                                     .add(new Package(module.getSubPackage())
                                                         .add(new TemplatedFile(module.getPrefix()+"ViewImpl.java", templatesBasePath + "/frontend-ui/source/ViewImpl.java"))
                                                     )
                                                 )
-                                                .add(new TemplatedFile(module.getModuleName()+"Component.java", templatesBasePath + "/frontend-ui/source/Component.java"))
-                                                .add(new TemplatedFile("package-info.java", templatesBasePath + "/frontend-ui/source/package-info.java"))
                                             )
                                         )
                                 )

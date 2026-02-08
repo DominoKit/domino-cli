@@ -22,32 +22,33 @@ on:
 
 jobs:
   verify:
-    strategy:
-      matrix:
-        java-version: [ 17 ]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v3
-      - name: Install Java and Maven
-        uses: actions/setup-java@v3
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
-          java-version: ${{ matrix.java-version }}
-          distribution: 'temurin'
-      - run: ./mvnw verify -B -e
+          java-version: 17
+          distribution: temurin
+          cache: maven
+
+      - name: Run Maven verify
+        run: ./mvnw verify -B -e
 
   release-ubuntu:
     needs: verify
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install Java and Maven
-        uses: actions/setup-java@v3
+      - name: Set up Java for deployment
+        uses: actions/setup-java@v4
         with:
           java-version: 17
-          distribution: 'temurin'
+          distribution: temurin
 
       - uses: luangong/setup-install4j@v1
         with:
@@ -60,7 +61,7 @@ jobs:
         if: contains(github.ref, 'master')
         run: ./mvnw -Pinstall4j,release package -e -B
       - run: mkdir staging && cp -r target/media/*.* staging
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v6
         with:
            name: Package
            path: staging

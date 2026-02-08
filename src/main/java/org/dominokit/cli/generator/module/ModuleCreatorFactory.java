@@ -1,17 +1,18 @@
 package org.dominokit.cli.generator.module;
 
-import org.dominokit.cli.generator.exception.InvalidCompilerTypeException;
 import org.dominokit.cli.generator.module.gwt.GWTModuleFactory;
-import org.dominokit.cli.generator.module.j2cl.J2CLModuleFactory;
 
+/**
+ * Factory for selecting the correct module generator.
+ */
 public class ModuleCreatorFactory {
 
-    public static ModuleCreator get(String projectType, String compiler, boolean single){
-
-        switch (compiler.toLowerCase()){
-            case "gwt": return GWTModuleFactory.get(projectType, single);
-            case "j2cl": return J2CLModuleFactory.get(single);
-            default:throw new InvalidCompilerTypeException("Invalid compiler type : ["+compiler+"]");
-        }
+    /**
+     * Returns the module creator.
+     *
+     * @return module creator
+     */
+    public static ModuleCreator get(){
+        return GWTModuleFactory.get("brix");
     }
 }

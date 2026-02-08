@@ -12,32 +12,65 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import static java.util.Objects.isNull;
+
+/**
+ * Copies a binary resource from the templates classpath.
+ */
 public class ResourceFile implements ProjectFile {
 
     private final String name;
     private final String template;
     private Supplier<Boolean> condition = () -> true;
 
+    /**
+     * Creates a resource file definition.
+     *
+     * @param name output file name
+     * @param template resource path under templates root
+     */
     public ResourceFile(String name, String template) {
         this.name = name;
         this.template = template;
     }
 
+    /**
+     * Returns the output file name.
+     *
+     * @return output file name
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the conditional predicate for file creation.
+     *
+     * @return condition supplier
+     */
     @Override
     public Supplier<Boolean> condition() {
         return condition;
     }
 
+    /**
+     * Sets the condition controlling whether the file is created.
+     *
+     * @param condition condition supplier
+     * @return this instance
+     */
     public ResourceFile setCondition(Supplier<Boolean> condition) {
         this.condition = condition;
         return this;
     }
 
+    /**
+     * Writes the resource file to disk if it does not already exist.
+     *
+     * @param path root path to write into
+     * @param context template context (unused)
+     */
     @Override
     public void write(String path, Map<String, Object> context) {
         if(condition().get()) {
@@ -45,12 +78,20 @@ public class ResourceFile implements ProjectFile {
                 Path filePath = Paths.get(path, name).toAbsolutePath();
                 File file = filePath.toFile();
                 if (!file.exists()) {
-                    byte[] content = IOUtils.resourceToByteArray("projects-templates/"+ VersionProfile.get().getTemplatesPath()+template, getClass().getClassLoader());
+                    byte[] content = IOUtils.resourceToByteArray(templatesRootPath() + template, getClass().getClassLoader());
                     Files.write(filePath, content);
                 }
             } catch (IOException  e) {
                 throw new FailedToCreateResourceException("Failed to write file, path : " + path + ", name : " + name, e);
             }
         }
+    }
+
+    private String templatesRootPath() {
+        String templatesPath = VersionProfile.get().getTemplatesPath();
+        if (isNull(templatesPath) || templatesPath.trim().isEmpty()) {
+            return "projects-templates";
+        }
+        return "projects-templates/" + templatesPath;
     }
 }

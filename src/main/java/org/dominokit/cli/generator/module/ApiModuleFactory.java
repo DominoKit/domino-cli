@@ -5,8 +5,17 @@ import org.dominokit.cli.generator.Package;
 import org.dominokit.cli.generator.project.Project;
 import org.dominokit.cli.generator.TemplatedFile;
 
+/**
+ * Factory for creating the optional API module scaffold.
+ */
 public class ApiModuleFactory {
 
+    /**
+     * Creates the API module folder structure.
+     *
+     * @param project project model
+     * @return root folder for the API module
+     */
     public static Folder create(Project project){
         return new Folder(project.getName()+"-api").setCondition(project::isGenerateApi)
                 .add(new Folder("src/main")

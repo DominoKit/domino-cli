@@ -10,8 +10,16 @@ import org.dominokit.cli.generator.module.ApiModuleFactory;
 import org.dominokit.cli.generator.project.Project;
 import org.dominokit.cli.generator.project.ProjectCreator;
 
+/**
+ * Generates a Brix GWT project scaffold.
+ */
 public class GwtBrixProject implements ProjectCreator {
 
+  /**
+   * Creates the project structure for a Brix app.
+   *
+   * @param project project model
+   */
   public void create(Project project) {
     project
         .add(new Folder(".idea")
