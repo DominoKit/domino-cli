@@ -1,21 +1,22 @@
 package org.dominokit.cli.commands;
 
 import java.util.logging.Logger;
+
 import static picocli.CommandLine.Command;
 import static picocli.CommandLine.HelpCommand;
 import static picocli.CommandLine.Option;
 
 /**
- * Generates a DominoKit application template project.
+ * Generates a DominoKit basic application scaffold.
  */
 @Command(
-        name = "app",
-        description = "Generate a DominoKit application scaffold (basic or brix).",
+        name = "basic-app",
+        description = "Generate a DominoKit basic application scaffold.",
         subcommands = HelpCommand.class
 )
-public class GenerateAppCommand implements Runnable {
+public class GenerateBasicAppCommand implements Runnable {
 
-    private static final Logger LOGGER = Logger.getLogger(GenerateAppCommand.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(GenerateBasicAppCommand.class.getName());
 
     @Option(
             names = {"-n", "--name"},
@@ -37,15 +38,6 @@ public class GenerateAppCommand implements Runnable {
     private String workingDire;
 
     @Option(
-            names = {"-t", "--type"},
-            description = "Template type:" +
-                    "\n\t\t -[basic] : client/shared/server modules with a simple setup" +
-                    "\n\t\t -[brix] : domino-brix frontend/backend/shared layout and assets",
-            defaultValue = "brix"
-    )
-    private String type;
-
-    @Option(
             names = {"-dev", "--dev"},
             description = "Use HEAD-SNAPSHOT DominoKit versions instead of release versions."
     )
@@ -55,16 +47,12 @@ public class GenerateAppCommand implements Runnable {
             names = {"-api", "--generate-api"},
             fallbackValue = "true",
             defaultValue = "true",
-            description = "Generate an API module using Quarkus REST (JAX-RS). Not supported for Brix apps."
+            description = "Generate an API module using Quarkus REST (JAX-RS)."
     )
     private boolean generateApi;
 
-
-    /**
-     * Executes project generation based on command options.
-     */
     @Override
     public void run() {
-        AppGenerator.generate(name, groupId, workingDire, type, dev, generateApi, AppGenerator.DEFAULT_VERSION, LOGGER);
+        AppGenerator.generate(name, groupId, workingDire, "basic", dev, generateApi, AppGenerator.DEFAULT_VERSION, LOGGER);
     }
 }

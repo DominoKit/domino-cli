@@ -5,20 +5,28 @@ import picocli.CommandLine;
 
 import static picocli.CommandLine.Command;
 
+/**
+ * Top-level CLI command that routes to generator subcommands.
+ */
 @TopCommand
 @Command(
         name = "domino",
         description = """
-        Executes domino commands
-        Use this command to generate basic template project or an MVP project.
+        DominoKit CLI entrypoint for scaffolding projects and modules,
+        plus listing or updating cached dependency versions.
         """,
         subcommands = {
                 CommandLine.HelpCommand.class,
-                GenerateCommand.class
+                GenerateCommand.class,
+                ListVersionsCommand.class,
+                UpdateVersionsCommand.class
         },
         mixinStandardHelpOptions = true
 )
 public class DominoCommand implements Runnable {
+    /**
+     * Picocli execution hook (no-op).
+     */
     @Override
     public void run() {
     }

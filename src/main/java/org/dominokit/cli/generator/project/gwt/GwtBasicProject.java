@@ -11,8 +11,16 @@ import org.dominokit.cli.generator.project.ProjectCreator;
 
 import java.nio.file.Paths;
 
+/**
+ * Generates a basic GWT project scaffold.
+ */
 public class GwtBasicProject implements ProjectCreator {
 
+    /**
+     * Creates the project structure for a basic GWT app.
+     *
+     * @param project project model
+     */
     public void create(Project project){
         project
                 .add(ApiModuleFactory.create(project))

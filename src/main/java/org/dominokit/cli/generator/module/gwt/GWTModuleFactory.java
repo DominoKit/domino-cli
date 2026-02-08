@@ -2,16 +2,21 @@ package org.dominokit.cli.generator.module.gwt;
 
 import org.dominokit.cli.generator.module.ModuleCreator;
 
+/**
+ * Factory for GWT module generators.
+ */
 public class GWTModuleFactory {
 
-    public static ModuleCreator get(String type, boolean single) {
-        if("mvp".equals(type)) {
-            if (single) {
-                return new GwtSingleModule();
-            }
-            return new GwtMultiModule();
-        }else {
+    /**
+     * Returns a module creator for the given framework type.
+     *
+     * @param type framework type
+     * @return module creator
+     */
+    public static ModuleCreator get(String type) {
+        if ("brix".equals(type)) {
             return new BrixMultiModule();
         }
+        throw new IllegalArgumentException("Invalid module framework : [" + type + "]");
     }
 }

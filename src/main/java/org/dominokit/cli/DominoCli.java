@@ -8,11 +8,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+/**
+ * CLI entrypoint for DominoKit project generation.
+ */
 @QuarkusMain
 public class DominoCli {
 
     private static final Logger LOGGER=Logger.getLogger(DominoCli.class.getName());
 
+    /**
+     * Executes the CLI with the provided arguments.
+     *
+     * @param args CLI arguments
+     */
     public static void main(String[] args) {
         try {
             CommandLine commandLine = new CommandLine(new DominoCommand());

@@ -15,10 +15,22 @@ import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
+/**
+ * FreeMarker helper for rendering template files.
+ */
 public class TemplateProvider {
 
     private static Configuration cfg;
 
+    /**
+     * Renders a template to the provided writer.
+     *
+     * @param templatePath template path under the templates root
+     * @param context data model
+     * @param out target writer
+     * @throws IOException when template cannot be read
+     * @throws TemplateException when template rendering fails
+     */
     public static void render(String templatePath, Map<String, Object> context, Writer out) throws IOException, TemplateException {
         fillVersions(context);
 
@@ -35,6 +47,15 @@ public class TemplateProvider {
                 );
     }
 
+    /**
+     * Renders a template into a string.
+     *
+     * @param templatePath template path under the templates root
+     * @param context data model
+     * @return rendered string
+     * @throws IOException when template cannot be read
+     * @throws TemplateException when template rendering fails
+     */
     public static String render(String templatePath, Map<String, Object> context) throws IOException, TemplateException {
         fillVersions(context);
         StringWriter out = new StringWriter();
@@ -46,7 +67,10 @@ public class TemplateProvider {
     private static Configuration getEngine() {
         if (isNull(cfg)) {
             cfg = new Configuration(Configuration.VERSION_2_3_29);
-            cfg.setClassLoaderForTemplateLoading(TemplateProvider.class.getClassLoader(), "/projects-templates/"+VersionProfile.get().getTemplatesPath());
+            cfg.setClassLoaderForTemplateLoading(
+                    TemplateProvider.class.getClassLoader(),
+                    templatesRootPath()
+            );
             cfg.setDefaultEncoding("UTF-8");
             cfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
             cfg.setLogTemplateExceptions(false);
@@ -55,5 +79,13 @@ public class TemplateProvider {
 
         }
         return cfg;
+    }
+
+    private static String templatesRootPath() {
+        String templatesPath = VersionProfile.get().getTemplatesPath();
+        if (isNull(templatesPath) || templatesPath.trim().isEmpty()) {
+            return "/projects-templates";
+        }
+        return "/projects-templates/" + templatesPath;
     }
 }

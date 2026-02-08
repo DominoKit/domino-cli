@@ -15,11 +15,27 @@ import org.dominokit.cli.generator.exception.FailedToCreateResourceException;
 import org.dominokit.cli.generator.module.Module;
 import org.dominokit.cli.generator.module.ModuleCreator;
 
+/**
+ * Generates a multi-module Brix scaffold (frontend, UI, shared).
+ */
 public class BrixMultiModule implements ModuleCreator {
+    /**
+     * Creates the Brix module structure using default templates.
+     *
+     * @param module module model
+     * @throws IOException when file creation fails
+     */
     public void create(Module module) throws IOException {
        create(module, "/module/gwt/multi/brix");
     }
 
+    /**
+     * Creates the Brix module structure using a specific templates base path.
+     *
+     * @param module module model
+     * @param templatesBasePath templates base path
+     * @throws IOException when file creation fails
+     */
     public void create(Module module, String templatesBasePath) throws IOException {
 
         module

@@ -1,17 +1,19 @@
 package org.dominokit.cli.generator.project;
 
-import org.dominokit.cli.generator.exception.InvalidCompilerTypeException;
 import org.dominokit.cli.generator.project.gwt.GWTProjectFactory;
-import org.dominokit.cli.generator.project.j2cl.J2CLProjectFactory;
 
+/**
+ * Factory for selecting the correct project generator by type.
+ */
 public class ProjectCreatorFactory {
 
-    public static final ProjectCreator get(String compiler, String projectType){
-
-        switch (compiler.toLowerCase()){
-            case "gwt": return GWTProjectFactory.get(projectType);
-            case "j2cl": return J2CLProjectFactory.get(projectType);
-            default:throw new InvalidCompilerTypeException("Invalid compiler type : ["+compiler+"]");
-        }
+    /**
+     * Returns a project creator for the given type.
+     *
+     * @param projectType project type
+     * @return project creator
+     */
+    public static ProjectCreator get(String projectType){
+        return GWTProjectFactory.get(projectType);
     }
 }

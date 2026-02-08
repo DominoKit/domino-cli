@@ -43,3 +43,4 @@ nb-configuration.xml
 /.quarkus/cli/plugins/
 ./AI_CONTEXT.md
 ./codex-ai.sh
+out/
