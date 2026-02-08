@@ -61,7 +61,7 @@ jobs:
         if: contains(github.ref, 'master')
         run: ./mvnw -Pinstall4j,release package -e -B
       - run: mkdir staging && cp -r target/media/*.* staging
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v6
         with:
            name: Package
            path: staging
